@@ -4,34 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tavle"
+    android:background="@drawable/tavle2"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:text="Button"
-        android:textSize="24sp" />
+        android:layout_marginTop="40dp"
+        android:text="@string/appNavn"
+        android:textSize="30sp" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:text="Button"
-        android:textSize="24sp" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:id="@+id/spillKnapp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:text="Button"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/coming_soon"
+        android:text="@string/spillKnappString"
         android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/statistikkKnapp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/coming_soon"
+        android:text="@string/statistikkKnappString"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/preferanseKnapp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/coming_soon"
+        android:text="@string/preferanserKnappString"
+        android:textSize="24sp" />
+
 </LinearLayout>
