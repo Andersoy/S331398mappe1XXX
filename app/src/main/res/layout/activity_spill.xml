@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.2"
-        android:background="@drawable/tavle"
+        android:background="@drawable/tavle2"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/avsluttSpillKnapp"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:text="Avslutt" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/oppgaverTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -42,25 +42,31 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/knapp1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="1"
+            android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/knapp2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="2"
+            android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/knapp3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="3"
+            android:textSize="24sp" />
     </LinearLayout>
 
 
@@ -71,25 +77,31 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/knapp4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="4"
+            android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/knapp5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="5"
+            android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/knapp6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="6"
+            android:textSize="24sp" />
     </LinearLayout>
 
 
@@ -100,25 +112,31 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/knapp7"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="7"
+            android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/knapp8"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="8"
+            android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/knapp9"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="9"
+            android:textSize="24sp" />
     </LinearLayout>
 
 
@@ -131,21 +149,23 @@
 
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/knapp00"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/knapp0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:backgroundTint="#00FFFFFF"
+            android:text="0"
+            android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/knapp000"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

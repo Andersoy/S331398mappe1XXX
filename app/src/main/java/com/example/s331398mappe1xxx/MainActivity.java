@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     Button spillKnapp;
     Button preferanseKnapp;
     Button statistikkKnapp;
+    static int antallOppgaver = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,5 +49,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public static int getAntallOppgaver() {
+        return antallOppgaver;
+    }
+
+    public void setAntallOppgaver(int antallOppgaver) {
+        this.antallOppgaver = antallOppgaver;
     }
 }
