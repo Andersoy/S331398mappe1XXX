@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "S331398mappe1+XXX"
