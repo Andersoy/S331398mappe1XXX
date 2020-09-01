@@ -1,7 +1,29 @@
 <resources>
     <string name="app_name">S331398mappe1+XXX</string>
-    <string name="appNavn">MatteGangstas</string>
-    <string name="spillKnappString">Spill</string>
-    <string name="statistikkKnappString">Statistikk</string>
-    <string name="preferanserKnappString">Preferanser</string>
+    <string name="appNavn">Mattespill</string>
+    <string name="spill">Spill</string>
+    <string name="statistikk">Statistikk</string>
+    <string name="preferanser">Preferanser</string>
+    <string name="spraak">Språk</string>
+    <string name="forrige_spill">Forrige spill</string>
+    <string name="resultater">Resultater</string>
+    <string name="ingen_flere_tilgjengelige_sp_rsm_l">Ingen flere tilgjengelige spørsmål</string>
+    <string name="antall_oppgaver_0">Antall oppgaver: 0</string>
+    <string name="antall_riktige_svar_0">Antall riktige svar: 0</string>
+    <string name="antall_feil_svar_0">Antall feil svar: 0</string>
+    <string name="antallOppgaver">Antall oppgaver: </string>
+    <string name="antallRiktigeSvar">Antall riktige svar: </string>
+    <string name="antallFeilSvar">Antall feil svar: </string>
+    <string name="antallSpill">Antall spill: "</string>
+    <string name="hovedmeny">Hovedmeny</string>
+    <string name="spill_p_nytt">Spill på nytt</string>
+    <string name="antall_oppgaver_per_runde">Antall oppgaver per runde:</string>
+    <string name="avslutt">Avslutt</string>
+    <string name="oppgaver_vises_her">Oppgaver vises her</string>
+    <string name="alle_spill">Alle spill</string>
+    <string name="antall_spill_0">Antall spill: 0</string>
+    <string name="nullstill">Nullstill</string>
+    <string name="er_du_sikker">Er du sikker?</string>
+    <string name="ja">Ja</string>
+    <string name="nei">Nei</string>
 </resources>

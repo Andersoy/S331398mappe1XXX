@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:text="@string/appNavn"
         android:textSize="30sp" />
 
@@ -25,7 +25,7 @@
         android:layout_marginTop="50dp"
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/coming_soon"
-        android:text="@string/spillKnappString"
+        android:text="@string/spill"
         android:textSize="24sp" />
 
     <Button
@@ -37,7 +37,7 @@
         android:layout_marginTop="50dp"
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/coming_soon"
-        android:text="@string/statistikkKnappString"
+        android:text="@string/statistikk"
         android:textSize="24sp" />
 
     <Button
@@ -49,7 +49,7 @@
         android:layout_marginTop="50dp"
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/coming_soon"
-        android:text="@string/preferanserKnappString"
+        android:text="@string/preferanser"
         android:textSize="24sp" />
 
 </LinearLayout>

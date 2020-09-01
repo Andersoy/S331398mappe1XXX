@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".StatistikkActivity"></activity>
+        <activity android:name=".ResultatActivity"/>
+        <activity android:name=".StatistikkActivity" />
         <activity android:name=".PreferanseActivity" />
         <activity android:name=".SpillActivity" />
         <activity android:name=".MainActivity">

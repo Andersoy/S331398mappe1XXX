@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">S331398mappe1+XXX</string>
+    <string name="appNavn">Das Mathespiel</string>
+    <string name="spill">Spiel</string>
+    <string name="statistikk">Statistik</string>
+    <string name="preferanser">Einstellungen</string>
+    <string name="spraak">Sprache</string>
+    <string name="forrige_spill">Letztes Spiel</string>
+    <string name="resultater">Ergebnisse</string>
+    <string name="ingen_flere_tilgjengelige_sp_rsm_l">Keine weiteren Fragen vorhanden</string>
+    <string name="antall_oppgaver_0">Anzahl Aufgaben: 0</string>
+    <string name="antall_riktige_svar_0">Anzahl richtiger Antworten: 0</string>
+    <string name="antall_feil_svar_0">Anzahl falscher Antworten: 0</string>
+    <string name="antallOppgaver">Anzahl Aufgaben: </string>
+    <string name="antallRiktigeSvar">Anzahl richtiger Antworten: </string>
+    <string name="antallFeilSvar">Anzahl falscher Antworten: </string>
+    <string name="antallSpill">Absolvierte Spiele: "</string>
+    <string name="hovedmeny">Hauptmenü</string>
+    <string name="spill_p_nytt">Neues Spiel</string>
+    <string name="antall_oppgaver_per_runde">Anzahl Aufgaben pro Runde:</string>
+    <string name="avslutt">Spiel beenden</string>
+    <string name="oppgaver_vises_her">Aufgaben</string>
+    <string name="alle_spill">Alle Spiele</string>
+    <string name="antall_spill_0">Absolvierte Spiele: 0</string>
+    <string name="nullstill">Zurücksetzen</string>
+    <string name="er_du_sikker">TYSK TYSK TYSK?</string>
+    <string name="ja">TYSK</string>
+    <string name="nei">tysk</string>
+
+</resources>
