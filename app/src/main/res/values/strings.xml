@@ -26,4 +26,7 @@
     <string name="er_du_sikker">Er du sikker?</string>
     <string name="ja">Ja</string>
     <string name="nei">Nei</string>
+    <string name="positivTilbakemelding">Supert, dette kan du!</string>
+    <string name="noytralTilbakemelding">Ikke verst, men prøv gjerne igjen!</string>
+    <string name="motiverendeTilbakemelding">Ikke gi opp, øvelse gjør mester!</string>
 </resources>

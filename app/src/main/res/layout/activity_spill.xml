@@ -29,9 +29,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="30dp"
+            android:layout_marginTop="10dp"
             android:text="@string/oppgaver_vises_her"
+            android:textAlignment="center"
             android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="="
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/innfyllingTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:text="svar"
+            android:textAlignment="center"
+            android:textSize="36sp" />
+
 
     </LinearLayout>
 
@@ -149,12 +171,13 @@
 
 
         <Button
-            android:id="@+id/knapp00"
+            android:id="@+id/slettKnapp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#0AFFFFFF"
-            android:text="" />
+            android:text="SLETT"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/knapp0"
@@ -166,12 +189,13 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/knapp000"
+            android:id="@+id/leverKnapp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#0AFFFFFF"
-            android:text="" />
+            android:text="OK"
+            android:textSize="24sp" />
 
 
     </LinearLayout>

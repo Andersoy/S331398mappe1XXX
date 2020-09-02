@@ -27,5 +27,8 @@
     <string name="er_du_sikker">TYSK TYSK TYSK?</string>
     <string name="ja">TYSK</string>
     <string name="nei">tysk</string>
+    <string name="positivTilbakemelding">TYSKKSKSKSK!</string>
+    <string name="noytralTilbakemelding">TYYYYYSK!</string>
+    <string name="motiverendeTilbakemelding">TYSK:(</string>
 
 </resources>
