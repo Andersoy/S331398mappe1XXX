@@ -30,5 +30,8 @@
     <string name="positivTilbakemelding">TYSKKSKSKSK!</string>
     <string name="noytralTilbakemelding">TYYYYYSK!</string>
     <string name="motiverendeTilbakemelding">TYSK:(</string>
+    <string name="riktigSvarTilbakemelding">TYSKKSKSKSK</string>
+    <string name="blanktSvarTilbakemelding">TYSKKSKSKSKTYSKKSKSKSK</string>
+    <string name="feilSvarTilbakemelding">TYSKKSKSKSKTYSKKSKSKSKTYSKKSKSKSK</string>
 
 </resources>

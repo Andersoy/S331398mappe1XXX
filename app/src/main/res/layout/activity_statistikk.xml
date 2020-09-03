@@ -54,7 +54,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="37dp"
             android:src="@drawable/kritt" />
 
     </LinearLayout>
@@ -62,16 +62,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="2.5"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:text="@string/alle_spill"
-            android:textSize="36sp"
-            android:layout_gravity="center_horizontal"/>
+            android:textSize="36sp" />
 
         <TextView
             android:id="@+id/totaltAntSpillAlleTextView"
@@ -110,33 +110,33 @@
             android:textSize="18sp" />
 
 
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="0dp"
-         android:layout_weight="1"
-         android:orientation="horizontal"
-         android:layout_marginTop="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-         <Button
-             android:id="@+id/nullstillButton"
-             android:layout_width="0dp"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center_horizontal"
-             android:layout_marginLeft="20dp"
-             android:layout_weight="1"
-             android:backgroundTint="#0AFFFFFF"
-             android:text="@string/nullstill" />
+            <Button
+                android:id="@+id/nullstillButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="#0AFFFFFF"
+                android:text="@string/nullstill" />
 
-         <Button
-             android:id="@+id/hovedmenyStatButton"
-             android:layout_width="0dp"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center_horizontal"
-             android:layout_marginRight="20dp"
-             android:layout_weight="1"
-             android:backgroundTint="#0AFFFFFF"
-             android:text="@string/hovedmeny" />
-     </LinearLayout>
+            <Button
+                android:id="@+id/hovedmenyStatButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="#0AFFFFFF"
+                android:text="@string/hovedmeny" />
+        </LinearLayout>
 
 
     </LinearLayout>

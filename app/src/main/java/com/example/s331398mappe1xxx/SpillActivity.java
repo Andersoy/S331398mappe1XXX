@@ -10,28 +10,26 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class SpillActivity extends AppCompatActivity {
-    //TODO: Lage edittext felt under oppgavetextview og tilbakeknapp og leverknapp.
-    //TODO: Lag counter på antall riktige
-    //TODO: Legge inn private i alle aktiviteter?
-    private int antallOppgaver;
-    private TextView oppgaveTextView, innfyllingTextview;
-    Button knapp1, knapp2, knapp3, knapp4, knapp5, knapp6, knapp7, knapp8, knapp9, knapp0;
-    Button avsluttSpillKnapp, slettKnapp, leverKnapp;
+
+    private TextView oppgaveTextView, erlikTextview, innfyllingTextview, riktigeCounter;
+    Button knapp0, knapp1, knapp2, knapp3, knapp4, knapp5, knapp6, knapp7, knapp8, knapp9;
+    private Button avsluttSpillKnapp, slettKnapp, leverKnapp;
+    private ImageView understrek;
+
+    private ArrayList<Integer> tilfeldigeTall = new ArrayList<Integer>();
+    private String[] oppgaver;
+    private int[] arraySvar;
     private int teller;
+    private int antallOppgaver;
     private int antallRiktigeSvar;
     private int antallGaleSvar;
-
-    /**Oppretter arraylist og random for å kunne lage en liste med tilfeldige tall*/
-    ArrayList<Integer> tilfeldigeTall = new ArrayList<Integer>();
-
-    //Lager nye array basert på array fra values/array.xml
-    String[] oppgaver;
-    int[] arraySvar;
+    private boolean venter = false;
 
     SharedPreferences deltePreferanser;
 
@@ -44,8 +42,10 @@ public class SpillActivity extends AppCompatActivity {
         antallOppgaver = deltePreferanser.getInt("AntallOppgaver", 0);
 
         oppgaveTextView = findViewById(R.id.oppgaverTextView);
+        erlikTextview = findViewById(R.id.erlikTextView);
         innfyllingTextview = findViewById(R.id.innfyllingTextview);
-        innfyllingTextview.setText("");
+        riktigeCounter = findViewById(R.id.riktigeCounter);
+        understrek = findViewById(R.id.understrek);
 
         avsluttSpillKnapp = findViewById(R.id.avsluttSpillKnapp);
         slettKnapp = findViewById(R.id.slettKnapp);
@@ -68,8 +68,7 @@ public class SpillActivity extends AppCompatActivity {
         });
 
         leverKnapp.setOnClickListener(view -> {
-            int svar = Integer.parseInt(innfyllingTextview.getText().toString());
-            kontroll(svar);
+            sjekkBrukerSvar();
         });
 
         avsluttSpillKnapp.setOnClickListener(view -> {
@@ -98,11 +97,7 @@ public class SpillActivity extends AppCompatActivity {
 
         oppgaver = getResources().getStringArray(R.array.Oppgaver);
         arraySvar = getResources().getIntArray(R.array.Svar);
-        teller = 0;
-        antallRiktigeSvar = 0;
-        antallGaleSvar = 0;
         Random randomGenerator = new Random();
-
 
         /**lager en liste med tilfeldige tall mellom 1 og 25. Listen er like lang som antall oppgaver man har valgt*/
         /** og ingen tall gjentar seg.*/
@@ -114,44 +109,62 @@ public class SpillActivity extends AppCompatActivity {
         }
 
         /**skriver første oppgave til skjerm*/
-        oppgaveTextView.setText(oppgaver[tilfeldigeTall.get(teller)]);
+        nyttRegnestykke();
     }
 
     void fyllInn(int tall){
         String svar = innfyllingTextview.getText().toString();
-        if(svar.length() > 0){
-            svar = svar + tall;
+        /** sikrer at kanppen ikke gjør noe i ventemodus eller øker siffer antallet over int grensen*/
+        if(venter || svar.length() > 8){
+            return;
         }
-        else{
-            svar = String.valueOf(tall);
-        }
-        innfyllingTextview.setText(svar);
 
+        svar = svar + tall;
+        innfyllingTextview.setText(svar);
     }
 
-    /** kontrollerer om spilleren har trykket på riktig svar.*/
-     void kontroll(int tall){
+    /** kontrollerer om spilleren har trykket på riktig svar og gir tilbakemelding*/
+     void sjekkBrukerSvar(){
+         /** sikrer at kanppen ikke gjør noe når brukeren får tilbakemelding*/
+         if(venter){
+             return;
+         }
 
-        int intSvar = arraySvar[tilfeldigeTall.get(teller)];
+         String svarStreng = innfyllingTextview.getText().toString();
+         int svar = -1;
+         if (svarStreng != ""){
+             svar = Integer.parseInt(svarStreng);
+         }
 
-        if (intSvar == tall) {
-            oppgaveTextView.setText(tall+" er riktig svar!");
-            antallRiktigeSvar++;
-            oppgaveTextView.setTextSize(30);
-        } else {
-            oppgaveTextView.setText(tall+" er feil.\n Riktig svar var: "+intSvar);
-            antallGaleSvar++;
-            oppgaveTextView.setTextSize(30);
-        }
+         innfyllingTextview.setText("");
+         erlikTextview.setText("");
+         understrek.setVisibility(View.INVISIBLE);
+
+         int intSvar = arraySvar[tilfeldigeTall.get(teller)];
+         String tilbakemelding;
+         if (intSvar == svar) {
+             tilbakemelding = svar + " " + getString(R.string.riktigSvarTilbakemelding);
+             antallRiktigeSvar++;
+             riktigeCounter.setText(String.valueOf(antallRiktigeSvar));
+         } else if (svar == -1){
+             tilbakemelding = getString(R.string.blanktSvarTilbakemelding) + " " + intSvar;
+             antallGaleSvar++;
+         } else{
+             tilbakemelding = svar + " " + getString(R.string.feilSvarTilbakemelding) + " " + intSvar;
+             antallGaleSvar++;
+         }
+         oppgaveTextView.setText(tilbakemelding);
+         oppgaveTextView.setTextSize(30);
 
          /** Følgende utføres for å få programmet til å vente 2 sekunder mellom spørsmålene slik at
           * spilleren kan se om de har svar riktig eller galt*/
-            //TODO: Fikse slik at man ikke kan dobbelklikke seg videre i spørsmålene
+         venter = true;
          final Handler barnevakt = new Handler();
          barnevakt.postDelayed(() -> {
              teller++;
+             venter = false;
              nyttRegnestykke();
-         }, 200);
+         }, 1000);
     }
 
     void nyttRegnestykke(){
@@ -159,6 +172,8 @@ public class SpillActivity extends AppCompatActivity {
         if (teller < antallOppgaver) {
             oppgaveTextView.setTextSize(36);
             oppgaveTextView.setText(oppgaver[tilfeldigeTall.get(teller)]);
+            erlikTextview.setText("= ");
+            understrek.setVisibility(View.VISIBLE);
         } else {
             /** Lagrer antallRiktigeSvar, antallGaleSvar og antallOppgaver til statistikksiden.*/
             lagre();
@@ -183,6 +198,7 @@ public class SpillActivity extends AppCompatActivity {
         int totaltOppgaver = deltePreferanser.getInt("TotaltAntOppgaver", 0) + antallOppgaver;
         int totaltRiktig = deltePreferanser.getInt("TotaltRiktig", 0) + antallRiktigeSvar;
         int totaltFeil = deltePreferanser.getInt("TotaltFeil", 0) + antallGaleSvar;
+
         editor.putInt("AntallSpill", antSpill);
         editor.putInt("TotaltAntOppgaver", totaltOppgaver);
         editor.putInt("TotaltRiktig", totaltRiktig);

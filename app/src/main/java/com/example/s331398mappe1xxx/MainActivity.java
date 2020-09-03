@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
+    // TODO: Legge inn private der egnet i alle aktiviteter?
     // TODO: Lag appikon og navn på app
     // TODO: Landscapemode
     // TODO: Juster layout etter designregler

@@ -14,45 +14,80 @@
         android:background="@drawable/tavle2"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/avsluttSpillKnapp"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|top"
-            android:layout_margin="5dp"
-            android:backgroundTint="#0AFFFFFF"
-            android:text="@string/avslutt" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/check" />
+
+            <TextView
+                android:id="@+id/riktigeCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0.2"
+                android:text="0"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/avsluttSpillKnapp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|top"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="#0AFFFFFF"
+                android:text="@string/avslutt" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/oppgaverTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
             android:text="@string/oppgaver_vises_her"
             android:textAlignment="center"
             android:textSize="36sp" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="="
-            android:textSize="40sp" />
+        <ImageView
+            android:id="@+id/understrek"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_margin="-10dp"
+            app:srcCompat="@drawable/kritt" />
 
-        <TextView
-            android:id="@+id/innfyllingTextview"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:layout_marginTop="10dp"
-            android:text="svar"
-            android:textAlignment="center"
-            android:textSize="36sp" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/erlikTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="= "
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/innfyllingTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+        </LinearLayout>
 
 
     </LinearLayout>

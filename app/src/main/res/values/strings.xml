@@ -29,4 +29,8 @@
     <string name="positivTilbakemelding">Supert, dette kan du!</string>
     <string name="noytralTilbakemelding">Ikke verst, men prøv gjerne igjen!</string>
     <string name="motiverendeTilbakemelding">Ikke gi opp, øvelse gjør mester!</string>
+    <string name="riktigSvarTilbakemelding">er riktig svar!</string>
+    <string name="blanktSvarTilbakemelding">Du svarte blankt. \n Riktig svar var:</string>
+    <string name="feilSvarTilbakemelding">er feil. \n Riktig svar var:</string>
+
 </resources>
