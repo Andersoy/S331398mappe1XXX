@@ -131,6 +131,7 @@ public class SpillActivity extends AppCompatActivity {
          }
 
          String svarStreng = innfyllingTextview.getText().toString();
+         /** setter flagg -1 for tomt felt siden det ikke kan parses til int*/
          int svar = -1;
          if (svarStreng != ""){
              svar = Integer.parseInt(svarStreng);

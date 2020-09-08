@@ -64,8 +64,9 @@
 
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
+        android:layout_width="236dp"
+        android:layout_height="54dp"
+        android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/kritt" />
 
     <TextView

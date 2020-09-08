@@ -8,13 +8,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="102dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:text="@string/appNavn"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:srcCompat="@drawable/langikon" />
 
     <Button
         android:id="@+id/spillKnapp"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/coming_soon"
         android:text="@string/spill"

@@ -9,9 +9,21 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     // TODO: Legge inn private der egnet i alle aktiviteter?
-    // TODO: Lag appikon og navn på app
     // TODO: Landscapemode
     // TODO: Juster layout etter designregler
+
+    // TODO: lag foreldre og barn i manifest fila
+    // TODO: lag fragmenter for ja nei boksene
+    // TODO: lag språk sjekk i alle oncreate metodene
+    // TODO: Reformater prefrences navn (og evt til xml fil)
+    // TODO: Reformater preferanser til en preferanse aktivitet
+    // TODO: Sjekke at fonten er konsekvendt
+    // TODO: ikoner på lever og slett på spillaktiviteten
+    // TODO: tommel opp og ned på resultat
+    // TODO: fix bug ked seltta tall
+    
+
+
 
     private Button spillKnapp, preferanseKnapp, statistikkKnapp;
     @Override
