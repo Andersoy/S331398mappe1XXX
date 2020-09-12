@@ -47,8 +47,6 @@ public class ResultatActivity extends AppCompatActivity {
 
 
         hovedmenyButton.setOnClickListener(view -> {
-            Intent byttTilNyActivity = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(byttTilNyActivity);
             finish();
         });
 
@@ -63,7 +61,6 @@ public class ResultatActivity extends AppCompatActivity {
     }
 
     /**Metode som bytter språk*/
-    //TODO: Denne metoden må mest sannslynlig oppdateres.
     public void forandreSpraak(String landskode){
         SharedPreferences.Editor editor = deltePreferanser.edit();
         editor.putString("spraakKode", landskode);
@@ -73,7 +70,7 @@ public class ResultatActivity extends AppCompatActivity {
         Resources ress = getResources();
         DisplayMetrics visMet = ress.getDisplayMetrics();
         Configuration konfigurasjon = ress.getConfiguration();
-        konfigurasjon.locale = mittSpraak;
+        konfigurasjon.setLocale(mittSpraak);
         ress.updateConfiguration(konfigurasjon, visMet);
         recreate();
     }

@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".ResultatActivity"/>
-        <activity android:name=".StatistikkActivity" />
-        <activity android:name=".PreferanseActivity" />
-        <activity android:name=".SpillActivity" />
+        <activity android:name=".ResultatActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".StatistikkActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".PreferanseActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".SpillActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

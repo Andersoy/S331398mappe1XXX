@@ -16,16 +16,12 @@ public class MainActivity extends AppCompatActivity {
     // TODO: Legge inn private der egnet i alle aktiviteter?
     // TODO: Landscapemode
     // TODO: Juster layout etter designregler
-
-    // TODO: lag foreldre og barn i manifest fila
     // TODO: lag fragmenter for ja nei boksene
-    // TODO: lag språk sjekk i alle oncreate metodene
-    // TODO: Reformater prefrences navn (og evt til xml fil)
-    // TODO: Reformater preferanser til en preferanse aktivitet
-    // TODO: Sjekke at fonten er konsekvendt
+    // TODO: Sjekke at fonten er konsekvent
     // TODO: ikoner på lever og slett på spillaktiviteten
     // TODO: tommel opp og ned på resultat
-    // TODO: fix bug ked seltta tall
+    // TODO: Nye oppgaver
+    // TODO: Rapport
 
 
 
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             Resources ress = getResources();
             DisplayMetrics visMet = ress.getDisplayMetrics();
             Configuration konfigurasjon = ress.getConfiguration();
-            konfigurasjon.locale = mittSpraak;
+            konfigurasjon.setLocale(mittSpraak);
             ress.updateConfiguration(konfigurasjon, visMet);
         }
 
@@ -81,26 +77,25 @@ public class MainActivity extends AppCompatActivity {
         spillKnapp.setOnClickListener(view -> {
             Intent byttTilNyActivity = new Intent(getApplicationContext(), SpillActivity.class);
             startActivity(byttTilNyActivity);
-            finish();
+
         });
 
         /** Bytter til StatistikkActivity*/
         statistikkKnapp.setOnClickListener(view -> {
             Intent byttTilNyActivity = new Intent(getApplicationContext(), StatistikkActivity.class);
             startActivity(byttTilNyActivity);
-            finish();
+
         });
 
         /** Bytter til PreferanseActivity*/
         preferanseKnapp.setOnClickListener(view -> {
             Intent byttTilNyActivity = new Intent(getApplicationContext(), PreferanseActivity.class);
             startActivity(byttTilNyActivity);
-            finish();
+
         });
     }
 
     /**Metode som bytter språk*/
-    //TODO: Denne metoden må mest sannslynlig oppdateres.
      public void forandreSpraak(String landskode){
         SharedPreferences.Editor editor = deltePreferanser.edit();
         editor.putString("spraakKode", landskode);
@@ -110,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         Resources ress = getResources();
         DisplayMetrics visMet = ress.getDisplayMetrics();
         Configuration konfigurasjon = ress.getConfiguration();
-        konfigurasjon.locale = mittSpraak;
+         konfigurasjon.setLocale(mittSpraak);
         ress.updateConfiguration(konfigurasjon, visMet);
         recreate();
     }

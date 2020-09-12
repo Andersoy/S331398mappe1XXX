@@ -99,14 +99,13 @@ public class StatistikkActivity extends AppCompatActivity {
 
         /**onClick-metode som bytter activity til hovedmeny*/
         hovedmenyButton.setOnClickListener(view -> {
-            Intent byttTilHovedmeny = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(byttTilHovedmeny);
+           // Intent byttTilHovedmeny = new Intent(getApplicationContext(), MainActivity.class);
+            //startActivity(byttTilHovedmeny);
             finish();
         });
     }
 
     /**Metode som bytter språk*/
-    //TODO: Denne metoden må mest sannslynlig oppdateres.
     public void forandreSpraak(String landskode){
         SharedPreferences.Editor editor = deltePreferanser.edit();
         editor.putString("spraakKode", landskode);
@@ -116,7 +115,7 @@ public class StatistikkActivity extends AppCompatActivity {
         Resources ress = getResources();
         DisplayMetrics visMet = ress.getDisplayMetrics();
         Configuration konfigurasjon = ress.getConfiguration();
-        konfigurasjon.locale = mittSpraak;
+        konfigurasjon.setLocale(mittSpraak);
         ress.updateConfiguration(konfigurasjon, visMet);
         recreate();
     }

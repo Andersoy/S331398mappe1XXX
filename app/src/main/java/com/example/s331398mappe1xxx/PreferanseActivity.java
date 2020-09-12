@@ -61,8 +61,6 @@ public class PreferanseActivity extends AppCompatActivity {
         tyskButton.setOnClickListener(view -> forandreSpraak("de"));
 
         hovedmenyButton.setOnClickListener(view -> {
-            Intent byttTilHovedmeny = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(byttTilHovedmeny);
             finish();
         });
     }
@@ -93,7 +91,6 @@ public class PreferanseActivity extends AppCompatActivity {
     }
 
     /**Metode som bytter språk*/
-    //TODO: Denne metoden må mest sannslynlig oppdateres.
     private void forandreSpraak(String landskode){
         SharedPreferences.Editor editor = deltePreferanser.edit();
         editor.putString("spraakKode", landskode);
@@ -103,9 +100,8 @@ public class PreferanseActivity extends AppCompatActivity {
         Resources ress = getResources();
         DisplayMetrics visMet = ress.getDisplayMetrics();
         Configuration konfigurasjon = ress.getConfiguration();
-        konfigurasjon.locale = mittSpraak;
+        konfigurasjon.setLocale(mittSpraak);
         ress.updateConfiguration(konfigurasjon, visMet);
         recreate();
     }
-
 }

@@ -21,8 +21,6 @@ import java.util.Random;
 
 public class SpillActivity extends AppCompatActivity {
 
-    //TODO: Fikse porblemet med at spillet nullstilles når mobilen roteres
-
     private TextView oppgaveTextView, erlikTextview, innfyllingTextview, riktigeCounter;
     Button knapp0, knapp1, knapp2, knapp3, knapp4, knapp5, knapp6, knapp7, knapp8, knapp9;
     private Button avsluttSpillKnapp, slettKnapp, leverKnapp;
@@ -83,30 +81,37 @@ public class SpillActivity extends AppCompatActivity {
         });
 
         avsluttSpillKnapp.setOnClickListener(view -> {
-            DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
-                switch (which){
-                    case DialogInterface.BUTTON_POSITIVE:
-                        editor.putBoolean("aktivtSpill", false);
-                        Intent byttTilNyActivity = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(byttTilNyActivity);
-                        finish();
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        //do nothing
-                        break;
-                }
-            };
-            String erDuSikker = getString(R.string.er_du_sikker);
-            String ja= getString(R.string.ja);
-            String nei = getString(R.string.nei);
-            AlertDialog.Builder builder = new AlertDialog.Builder(SpillActivity.this);
-            builder.setMessage(erDuSikker).setPositiveButton(ja, dialogClickListener).setNegativeButton(nei, dialogClickListener).show();
+            avsluttDialog();
+
         });
 
         startSpill();
     }
 
+    @Override
+    public void onBackPressed() {
+        avsluttDialog();
+    }
+
+    void avsluttDialog(){
+        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+            switch (which){
+                case DialogInterface.BUTTON_POSITIVE:
+                    editor.putBoolean("aktivtSpill", false);
+                    finish();
+                case DialogInterface.BUTTON_NEGATIVE:
+                    //do nothing
+                    break;
+            }
+        };
+        String erDuSikker = getString(R.string.er_du_sikker);
+        String ja= getString(R.string.ja);
+        String nei = getString(R.string.nei);
+        AlertDialog.Builder builder = new AlertDialog.Builder(SpillActivity.this);
+        builder.setMessage(erDuSikker).setPositiveButton(ja, dialogClickListener).setNegativeButton(nei, dialogClickListener).show();
+    }
+
     /**Metode som bytter språk*/
-    //TODO: Denne metoden må mest sannslynlig oppdateres.
     public void forandreSpraak(String landskode){
 
         editor.putString("spraakKode", landskode);
@@ -116,7 +121,7 @@ public class SpillActivity extends AppCompatActivity {
         Resources ress = getResources();
         DisplayMetrics visMet = ress.getDisplayMetrics();
         Configuration konfigurasjon = ress.getConfiguration();
-        konfigurasjon.locale = mittSpraak;
+        konfigurasjon.setLocale(mittSpraak);
         ress.updateConfiguration(konfigurasjon, visMet);
         recreate();
     }
@@ -163,7 +168,7 @@ public class SpillActivity extends AppCompatActivity {
             antallGaleSvar = deltePreferanser.getInt("aktiveFeil",0);
             riktigeCounter.setText(String.valueOf(antallRiktigeSvar));
         }
-        
+
         utvalgteOppgaver = new String[antallOppgaver];
         utvalgteSvar = new int[antallOppgaver];
 
@@ -204,17 +209,14 @@ public class SpillActivity extends AppCompatActivity {
 
          String svarStreng = innfyllingTextview.getText().toString();
          /** setter flagg -1 for tomt felt siden det ikke kan parses til int*/
-         System.out.println("utskrift"+svarStreng);
          int svar = -1;
          if (!svarStreng.isEmpty()){
 
              svar = Integer.parseInt(svarStreng);
          }
-
          innfyllingTextview.setText("");
          erlikTextview.setText("");
          understrek.setVisibility(View.INVISIBLE);
-
 
          int intSvar = utvalgteSvar[teller];
          String tilbakemelding;
@@ -233,7 +235,6 @@ public class SpillActivity extends AppCompatActivity {
              tilbakemelding = svar + " " + getString(R.string.feilSvarTilbakemelding) + " " + intSvar;
              antallGaleSvar++;
              editor.putInt("aktiveFeil", antallGaleSvar);
-
          }
 
          editor.commit();
@@ -257,9 +258,7 @@ public class SpillActivity extends AppCompatActivity {
         /** Skriver nytt regnestykke til skjerm hvis man ikke har fullført alle*/
         if (teller < antallOppgaver) {
             oppgaveTextView.setTextSize(36);
-
             oppgaveTextView.setText(utvalgteOppgaver[teller]);
-
             erlikTextview.setText("= ");
             understrek.setVisibility(View.VISIBLE);
         } else {
@@ -267,7 +266,6 @@ public class SpillActivity extends AppCompatActivity {
             lagre();
 
             /**Bytter til resultatsiden*/
-            //TODO: Legge inn parent i manifest og fjerne Intent.
             Intent byttTilNyActivity = new Intent(getApplicationContext(), ResultatActivity.class);
             startActivity(byttTilNyActivity);
             finish();
