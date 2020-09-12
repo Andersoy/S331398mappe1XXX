@@ -123,8 +123,8 @@ public class SpillActivity extends AppCompatActivity {
 
     void startSpill(){
         antallOppgaver = deltePreferanser.getInt("AntallOppgaver", 0);
-        if(!deltePreferanser.getBoolean("aktivtSpill", false)){
 
+        if(!deltePreferanser.getBoolean("aktivtSpill", false)){
             String [] arrayAlleOppgaver = getResources().getStringArray(R.array.Oppgaver);
             int[] arrayAlleSvar = getResources().getIntArray(R.array.Svar);
             Random randomGenerator = new Random();
@@ -162,9 +162,8 @@ public class SpillActivity extends AppCompatActivity {
             antallRiktigeSvar = deltePreferanser.getInt("aktiveRiktige",0);
             antallGaleSvar = deltePreferanser.getInt("aktiveFeil",0);
             riktigeCounter.setText(String.valueOf(antallRiktigeSvar));
-
-
         }
+        
         utvalgteOppgaver = new String[antallOppgaver];
         utvalgteSvar = new int[antallOppgaver];
 
@@ -173,7 +172,6 @@ public class SpillActivity extends AppCompatActivity {
         for(int i = 0; i<antallOppgaver; i++){
             utvalgteOppgaver[i] = mellomlagringSplit[i];
         }
-
 
         mellomlagring = deltePreferanser.getString("aktivRundeSvar", null);
         mellomlagringSplit = mellomlagring.split(",");
@@ -195,7 +193,6 @@ public class SpillActivity extends AppCompatActivity {
         svar = svar + tall;
         innfyllingTextview.setText(svar);
     }
-
 
     /** kontrollerer om spilleren har trykket på riktig svar og gir tilbakemelding*/
      void sjekkBrukerSvar(){

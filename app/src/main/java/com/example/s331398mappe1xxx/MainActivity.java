@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         editor.remove("oppgaveTeller");
         editor.remove("aktiveRiktige");
         editor.remove(("aktiveFeil"));
+        editor.commit();
 
         spillKnapp = findViewById(R.id.spillKnapp);
         preferanseKnapp = findViewById(R.id.preferanseKnapp);
