@@ -23,6 +23,11 @@ public class PreferanseActivity extends AppCompatActivity {
 
         deltePreferanser = getApplicationContext().getSharedPreferences("StatistikkOgPreferanser", 0);
 
+        if(!getResources().getConfiguration().locale.toString().equals(deltePreferanser.getString("spraakKode", null))){
+            forandreSpraak(deltePreferanser.getString("spraakKode", null));
+        }
+
+
         /**Knytter knapper til variabler*/
         oppgaver5Button = findViewById(R.id.oppgaver5Button);
         oppgaver10Button = findViewById(R.id.oppgaver10Button);
@@ -58,6 +63,7 @@ public class PreferanseActivity extends AppCompatActivity {
         hovedmenyButton.setOnClickListener(view -> {
             Intent byttTilHovedmeny = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(byttTilHovedmeny);
+            finish();
         });
     }
 
@@ -89,14 +95,17 @@ public class PreferanseActivity extends AppCompatActivity {
     /**Metode som bytter språk*/
     //TODO: Denne metoden må mest sannslynlig oppdateres.
     private void forandreSpraak(String landskode){
+        SharedPreferences.Editor editor = deltePreferanser.edit();
+        editor.putString("spraakKode", landskode);
+        editor.commit();
+
         Locale mittSpraak = new Locale(landskode);
         Resources ress = getResources();
         DisplayMetrics visMet = ress.getDisplayMetrics();
         Configuration konfigurasjon = ress.getConfiguration();
         konfigurasjon.locale = mittSpraak;
         ress.updateConfiguration(konfigurasjon, visMet);
-        Intent oppdater = new Intent(getApplicationContext(), MainActivity.class);
-        finish();
-        startActivity(oppdater);
+        recreate();
     }
+
 }

@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class ResultatActivity extends AppCompatActivity {
 
@@ -24,6 +29,12 @@ public class ResultatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultat);
+
+        deltePreferanser = getApplicationContext().getSharedPreferences("StatistikkOgPreferanser", 0);
+
+        if(!getResources().getConfiguration().locale.toString().equals(deltePreferanser.getString("spraakKode", null))){
+            forandreSpraak(deltePreferanser.getString("spraakKode", null));
+        }
 
         /**Knytter Buttons og textviews til riktig ID*/
         smilefjes= findViewById(R.id.smilefjes);
@@ -51,8 +62,24 @@ public class ResultatActivity extends AppCompatActivity {
         giTilbakemelding();
     }
 
+    /**Metode som bytter språk*/
+    //TODO: Denne metoden må mest sannslynlig oppdateres.
+    public void forandreSpraak(String landskode){
+        SharedPreferences.Editor editor = deltePreferanser.edit();
+        editor.putString("spraakKode", landskode);
+        editor.commit();
+
+        Locale mittSpraak = new Locale(landskode);
+        Resources ress = getResources();
+        DisplayMetrics visMet = ress.getDisplayMetrics();
+        Configuration konfigurasjon = ress.getConfiguration();
+        konfigurasjon.locale = mittSpraak;
+        ress.updateConfiguration(konfigurasjon, visMet);
+        recreate();
+    }
+
     void giTilbakemelding(){
-        deltePreferanser = getApplicationContext().getSharedPreferences("StatistikkOgPreferanser", 0);
+
 
         /** Henter resultatet*/
         antallOppgaver = deltePreferanser.getInt("AntallOppgaverForrige", 0);

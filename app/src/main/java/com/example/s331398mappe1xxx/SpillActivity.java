@@ -6,25 +6,31 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 public class SpillActivity extends AppCompatActivity {
+
+    //TODO: Fikse porblemet med at spillet nullstilles når mobilen roteres
 
     private TextView oppgaveTextView, erlikTextview, innfyllingTextview, riktigeCounter;
     Button knapp0, knapp1, knapp2, knapp3, knapp4, knapp5, knapp6, knapp7, knapp8, knapp9;
     private Button avsluttSpillKnapp, slettKnapp, leverKnapp;
     private ImageView understrek;
+    SharedPreferences.Editor editor;
+    String[] utvalgteOppgaver;
+    int[] utvalgteSvar;
 
-    private ArrayList<Integer> tilfeldigeTall = new ArrayList<Integer>();
-    private String[] oppgaver;
-    private int[] arraySvar;
     private int teller;
     private int antallOppgaver;
     private int antallRiktigeSvar;
@@ -39,7 +45,12 @@ public class SpillActivity extends AppCompatActivity {
         setContentView(R.layout.activity_spill);
 
         deltePreferanser = getApplicationContext().getSharedPreferences("StatistikkOgPreferanser", 0);
-        antallOppgaver = deltePreferanser.getInt("AntallOppgaver", 0);
+        editor = deltePreferanser.edit();
+
+        if(!getResources().getConfiguration().locale.toString().equals(deltePreferanser.getString("spraakKode", null))){
+
+            forandreSpraak(deltePreferanser.getString("spraakKode", null));
+        }
 
         oppgaveTextView = findViewById(R.id.oppgaverTextView);
         erlikTextview = findViewById(R.id.erlikTextView);
@@ -75,6 +86,7 @@ public class SpillActivity extends AppCompatActivity {
             DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
+                        editor.putBoolean("aktivtSpill", false);
                         Intent byttTilNyActivity = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(byttTilNyActivity);
                         finish();
@@ -90,22 +102,83 @@ public class SpillActivity extends AppCompatActivity {
             builder.setMessage(erDuSikker).setPositiveButton(ja, dialogClickListener).setNegativeButton(nei, dialogClickListener).show();
         });
 
-        startSpill(antallOppgaver);
+        startSpill();
     }
 
-    void startSpill(int antallOppgaver){
+    /**Metode som bytter språk*/
+    //TODO: Denne metoden må mest sannslynlig oppdateres.
+    public void forandreSpraak(String landskode){
 
-        oppgaver = getResources().getStringArray(R.array.Oppgaver);
-        arraySvar = getResources().getIntArray(R.array.Svar);
-        Random randomGenerator = new Random();
+        editor.putString("spraakKode", landskode);
+        editor.commit();
 
-        /**lager en liste med tilfeldige tall mellom 1 og 25. Listen er like lang som antall oppgaver man har valgt*/
-        /** og ingen tall gjentar seg.*/
-        while (tilfeldigeTall.size() < antallOppgaver) {
-            int random = randomGenerator.nextInt(25);
-            if (!tilfeldigeTall.contains(random)) {
-                tilfeldigeTall.add(random);
+        Locale mittSpraak = new Locale(landskode);
+        Resources ress = getResources();
+        DisplayMetrics visMet = ress.getDisplayMetrics();
+        Configuration konfigurasjon = ress.getConfiguration();
+        konfigurasjon.locale = mittSpraak;
+        ress.updateConfiguration(konfigurasjon, visMet);
+        recreate();
+    }
+
+    void startSpill(){
+        antallOppgaver = deltePreferanser.getInt("AntallOppgaver", 0);
+        if(!deltePreferanser.getBoolean("aktivtSpill", false)){
+
+            String [] arrayAlleOppgaver = getResources().getStringArray(R.array.Oppgaver);
+            int[] arrayAlleSvar = getResources().getIntArray(R.array.Svar);
+            Random randomGenerator = new Random();
+            ArrayList<Integer> tilfeldigeTall = new ArrayList<Integer>();
+            teller = 0;
+            String alleOppgaver = "";
+            String alleSvar = "";
+
+            /**lager en liste med tilfeldige tall mellom 1 og 25. Listen er like lang som antall oppgaver man har valgt*/
+            /** og ingen tall gjentar seg.*/
+            while (tilfeldigeTall.size() < antallOppgaver) {
+                int random = randomGenerator.nextInt(25);
+                if (!tilfeldigeTall.contains(random)) {
+                    tilfeldigeTall.add(random);
+                }
             }
+
+            for(int i = 0; i < antallOppgaver; i++){
+                    alleOppgaver += arrayAlleOppgaver[tilfeldigeTall.get(i)]+",";
+            }
+
+            for(int i = 0; i < antallOppgaver; i++){
+                alleSvar += arrayAlleSvar[tilfeldigeTall.get(i)]+",";
+            }
+
+            editor.putString("aktivRundeOppgaver", alleOppgaver);
+            editor.putString("aktivRundeSvar", alleSvar);
+            editor.putBoolean("aktivtSpill", true);
+            editor.putInt("oppgaveTeller", teller);
+            editor.commit();
+        }
+
+        else{
+            teller = deltePreferanser.getInt("oppgaveTeller", 0);
+            antallRiktigeSvar = deltePreferanser.getInt("aktiveRiktige",0);
+            antallGaleSvar = deltePreferanser.getInt("aktiveFeil",0);
+            riktigeCounter.setText(String.valueOf(antallRiktigeSvar));
+
+
+        }
+        utvalgteOppgaver = new String[antallOppgaver];
+        utvalgteSvar = new int[antallOppgaver];
+
+        String mellomlagring = deltePreferanser.getString("aktivRundeOppgaver", null);
+        String[] mellomlagringSplit = mellomlagring.split(",");
+        for(int i = 0; i<antallOppgaver; i++){
+            utvalgteOppgaver[i] = mellomlagringSplit[i];
+        }
+
+
+        mellomlagring = deltePreferanser.getString("aktivRundeSvar", null);
+        mellomlagringSplit = mellomlagring.split(",");
+        for(int i = 0; i<antallOppgaver; i++){
+            utvalgteSvar[i] = Integer.parseInt(mellomlagringSplit[i]);
         }
 
         /**skriver første oppgave til skjerm*/
@@ -123,8 +196,10 @@ public class SpillActivity extends AppCompatActivity {
         innfyllingTextview.setText(svar);
     }
 
+
     /** kontrollerer om spilleren har trykket på riktig svar og gir tilbakemelding*/
      void sjekkBrukerSvar(){
+
          /** sikrer at kanppen ikke gjør noe når brukeren får tilbakemelding*/
          if(venter){
              return;
@@ -132,8 +207,10 @@ public class SpillActivity extends AppCompatActivity {
 
          String svarStreng = innfyllingTextview.getText().toString();
          /** setter flagg -1 for tomt felt siden det ikke kan parses til int*/
+         System.out.println("utskrift"+svarStreng);
          int svar = -1;
-         if (svarStreng != ""){
+         if (!svarStreng.isEmpty()){
+
              svar = Integer.parseInt(svarStreng);
          }
 
@@ -141,19 +218,28 @@ public class SpillActivity extends AppCompatActivity {
          erlikTextview.setText("");
          understrek.setVisibility(View.INVISIBLE);
 
-         int intSvar = arraySvar[tilfeldigeTall.get(teller)];
+
+         int intSvar = utvalgteSvar[teller];
          String tilbakemelding;
          if (intSvar == svar) {
              tilbakemelding = svar + " " + getString(R.string.riktigSvarTilbakemelding);
              antallRiktigeSvar++;
              riktigeCounter.setText(String.valueOf(antallRiktigeSvar));
+             editor.putInt("aktiveRiktige", antallRiktigeSvar);
+
          } else if (svar == -1){
              tilbakemelding = getString(R.string.blanktSvarTilbakemelding) + " " + intSvar;
              antallGaleSvar++;
+             editor.putInt("aktiveFeil", antallGaleSvar);
+
          } else{
              tilbakemelding = svar + " " + getString(R.string.feilSvarTilbakemelding) + " " + intSvar;
              antallGaleSvar++;
+             editor.putInt("aktiveFeil", antallGaleSvar);
+
          }
+
+         editor.commit();
          oppgaveTextView.setText(tilbakemelding);
          oppgaveTextView.setTextSize(30);
 
@@ -163,6 +249,8 @@ public class SpillActivity extends AppCompatActivity {
          final Handler barnevakt = new Handler();
          barnevakt.postDelayed(() -> {
              teller++;
+             editor.putInt("oppgaveTeller", teller);
+             editor.commit();
              venter = false;
              nyttRegnestykke();
          }, 1000);
@@ -172,7 +260,9 @@ public class SpillActivity extends AppCompatActivity {
         /** Skriver nytt regnestykke til skjerm hvis man ikke har fullført alle*/
         if (teller < antallOppgaver) {
             oppgaveTextView.setTextSize(36);
-            oppgaveTextView.setText(oppgaver[tilfeldigeTall.get(teller)]);
+
+            oppgaveTextView.setText(utvalgteOppgaver[teller]);
+
             erlikTextview.setText("= ");
             understrek.setVisibility(View.VISIBLE);
         } else {
@@ -180,6 +270,7 @@ public class SpillActivity extends AppCompatActivity {
             lagre();
 
             /**Bytter til resultatsiden*/
+            //TODO: Legge inn parent i manifest og fjerne Intent.
             Intent byttTilNyActivity = new Intent(getApplicationContext(), ResultatActivity.class);
             startActivity(byttTilNyActivity);
             finish();
@@ -187,12 +278,11 @@ public class SpillActivity extends AppCompatActivity {
     }
 
     void lagre(){
-        SharedPreferences.Editor editor = deltePreferanser.edit();
-
         /**Oppdaterer "Forrige spill"*/
         editor.putInt("AntallOppgaverForrige", antallOppgaver);
         editor.putInt("AntallRiktigeForrige", antallRiktigeSvar);
         editor.putInt("AntallFeilForrige", antallGaleSvar);
+        editor.putBoolean("aktivtSpill", false);
 
         /**Oppdaterer "Alle spill"*/
         int antSpill = deltePreferanser.getInt("AntallSpill", 0) + 1;
