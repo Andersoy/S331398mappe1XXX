@@ -37,7 +37,7 @@
                 android:text="0"
                 android:textSize="24sp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/avsluttSpillKnapp"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="#0AFFFFFF"
-                android:text="@string/avslutt" />
+                android:src="@drawable/exit" />
         </LinearLayout>
 
         <TextView
@@ -205,14 +205,16 @@
         android:orientation="horizontal">
 
 
-        <Button
+        <ImageButton
             android:id="@+id/slettKnapp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#0AFFFFFF"
-            android:text="SLETT"
-            android:textSize="24sp" />
+            android:scaleType="centerInside"
+            android:src="@drawable/slett"
+            android:textSize="24sp"
+            android:elevation="2dp"/>
 
         <Button
             android:id="@+id/knapp0"
@@ -223,14 +225,16 @@
             android:text="0"
             android:textSize="24sp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/leverKnapp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#0AFFFFFF"
-            android:text="OK"
-            android:textSize="24sp" />
+            android:scaleType="centerInside"
+            android:src="@drawable/send"
+            android:textSize="24sp"
+            android:elevation="2dp"/>
 
 
     </LinearLayout>

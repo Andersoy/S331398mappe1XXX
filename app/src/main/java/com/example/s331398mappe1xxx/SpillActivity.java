@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class SpillActivity extends AppCompatActivity {
 
     private TextView oppgaveTextView, erlikTextview, innfyllingTextview, riktigeCounter;
     Button knapp0, knapp1, knapp2, knapp3, knapp4, knapp5, knapp6, knapp7, knapp8, knapp9;
-    private Button avsluttSpillKnapp, slettKnapp, leverKnapp;
+    private ImageButton slettKnapp, avsluttSpillKnapp, leverKnapp;;
     private ImageView understrek;
 
     String[] utvalgteOppgaver;
