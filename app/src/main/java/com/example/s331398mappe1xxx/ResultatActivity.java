@@ -45,7 +45,6 @@ public class ResultatActivity extends AppCompatActivity {
         antallRiktigeSvarResTextView = findViewById(R.id.antRiktSvarResTextView);
         antallFeilSvarResTextView = findViewById(R.id.antFeilSvarResTextView);
 
-
         hovedmenyButton.setOnClickListener(view -> {
             finish();
         });
@@ -77,12 +76,10 @@ public class ResultatActivity extends AppCompatActivity {
 
     void giTilbakemelding(){
 
-
         /** Henter resultatet*/
         antallOppgaver = deltePreferanser.getInt("AntallOppgaverForrige", 0);
         antallRiktigSvar = deltePreferanser.getInt("AntallRiktigeForrige", 0);
         antallFeilSvar = deltePreferanser.getInt("AntallFeilForrige", 0);
-
 
         /**Gir skriftlig og visuell tilbakemelding basert på resultat*/
         if((antallOppgaver*0.9)<=antallRiktigSvar){

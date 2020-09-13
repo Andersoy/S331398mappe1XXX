@@ -94,6 +94,7 @@ public class PreferanseActivity extends AppCompatActivity {
     private void forandreSpraak(String landskode){
         SharedPreferences.Editor editor = deltePreferanser.edit();
         editor.putString("spraakKode", landskode);
+        editor.putBoolean("skiftetSpraak", true);
         editor.commit();
 
         Locale mittSpraak = new Locale(landskode);

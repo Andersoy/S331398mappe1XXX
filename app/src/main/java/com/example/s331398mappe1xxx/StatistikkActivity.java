@@ -75,9 +75,7 @@ public class StatistikkActivity extends AppCompatActivity {
         totAntRktgTextView.setText(getResources().getString(R.string.antallRiktigeSvar)+totAntRiktig);
         totAntFeilTextView.setText(getResources().getString(R.string.antallFeilSvar)+totAntFeil);
 
-        /** Gir knapper onClick-metoder: */
-
-        /**Setter onClick med konfirmasjonsmeny til nullstillknappen*/
+        /**Setter onClick med dialog til nullstillknappen*/
         nullstillButton.setOnClickListener(view -> {
                 DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
                     switch (which){
@@ -99,8 +97,6 @@ public class StatistikkActivity extends AppCompatActivity {
 
         /**onClick-metode som bytter activity til hovedmeny*/
         hovedmenyButton.setOnClickListener(view -> {
-           // Intent byttTilHovedmeny = new Intent(getApplicationContext(), MainActivity.class);
-            //startActivity(byttTilHovedmeny);
             finish();
         });
     }
@@ -123,7 +119,6 @@ public class StatistikkActivity extends AppCompatActivity {
     void nullstillVerdier(){
         SharedPreferences.Editor editor = deltePreferanser.edit();
 
-        //Kjører remove på spesifikke verdier for å ikke slette antall oppgaver man har valgt og muligens språk(når vi får lagt det inn i sharedpref).
         /** Sletter spesifikke verdier for å nullstille statistikken, ikke preferanser*/
         editor.remove("AntallOppgaverForrige");
         editor.remove("AntallRiktigeForrige");
@@ -134,8 +129,6 @@ public class StatistikkActivity extends AppCompatActivity {
         editor.remove("TotaltFeil");
 
         editor.commit();
-        Intent oppdater = new Intent(getApplicationContext(), StatistikkActivity.class);
-        startActivity(oppdater);
-        finish();
+        recreate();
     }
 }
