@@ -18,7 +18,7 @@ public class ResultatActivity extends AppCompatActivity {
 
     ImageView smilefjes;
     Button hovedmenyButton, nyttSpillButton;
-    TextView tilbakemelding, antallOppgaverResTextView, antallRiktigeSvarResTextView, antallFeilSvarResTextView;
+    TextView tilbakemelding, antallRiktigeSvarResTextView, antallFeilSvarResTextView;
     SharedPreferences deltePreferanser;
     int antallOppgaver;
     int antallRiktigSvar;
@@ -41,7 +41,6 @@ public class ResultatActivity extends AppCompatActivity {
         tilbakemelding = findViewById(R.id.tilbakemelding);
         hovedmenyButton = findViewById(R.id.hovedmenyResButton);
         nyttSpillButton = findViewById(R.id.spillPaaNyttResButton);
-        antallOppgaverResTextView = findViewById(R.id.antallOpgResTextView);
         antallRiktigeSvarResTextView = findViewById(R.id.antRiktSvarResTextView);
         antallFeilSvarResTextView = findViewById(R.id.antFeilSvarResTextView);
 
@@ -97,8 +96,7 @@ public class ResultatActivity extends AppCompatActivity {
 
         /** Skriver tilbakemelding til skjerm*/
         tilbakemelding.setText(tilbakemeldingstring);
-        antallOppgaverResTextView.setText(getResources().getString(R.string.antallOppgaver)+antallOppgaver);
-        antallRiktigeSvarResTextView.setText(getResources().getString(R.string.antallRiktigeSvar)+ antallRiktigSvar);
-        antallFeilSvarResTextView.setText(getResources().getString(R.string.antallFeilSvar)+antallFeilSvar);
+        antallRiktigeSvarResTextView.setText(""+ antallRiktigSvar);
+        antallFeilSvarResTextView.setText(""+antallFeilSvar);
     }
 }

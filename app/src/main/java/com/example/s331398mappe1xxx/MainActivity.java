@@ -18,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
     // TODO: Landscapemode
     // TODO: Juster layout etter designregler
     // TODO: lag fragmenter for ja nei boksene
-    // TODO: Sjekke at fonten er konsekvent
-    // TODO: ikoner på lever og slett på spillaktiviteten
-    // TODO: tommel opp og ned på resultat
     // TODO: Nye oppgaver
     // TODO: Oversette gjenværende til tysk
     // TODO: Rapport

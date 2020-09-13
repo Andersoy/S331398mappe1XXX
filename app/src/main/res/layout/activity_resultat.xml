@@ -15,14 +15,16 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:text="@string/ingen_flere_tilgjengelige_sp_rsm_l"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:fontFamily="@font/coming_soon"
+        />
 
     <ImageView
         android:id="@+id/smilefjes"
         android:layout_width="215dp"
         android:layout_height="97dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         app:srcCompat="@drawable/meh" />
 
     <TextView
@@ -32,34 +34,10 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
         android:text="Tilbakemelding"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:fontFamily="@font/coming_soon"
+        />
 
-    <TextView
-        android:id="@+id/antallOpgResTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:text="@string/antall_oppgaver_0"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/antRiktSvarResTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:text="@string/antall_riktige_svar_0"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/antFeilSvarResTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:text="@string/antall_feil_svar_0"
-        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,25 +45,76 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="100dp"
+            app:srcCompat="@drawable/thumbsup" />
+
+        <TextView
+            android:id="@+id/antRiktSvarResTextView"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:fontFamily="@font/coming_soon" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="100dp"
+            app:srcCompat="@drawable/thumbsdown" />
+
+        <TextView
+            android:id="@+id/antFeilSvarResTextView"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:fontFamily="@font/coming_soon" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        >
+
         <Button
             android:id="@+id/hovedmenyResButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginBottom="50dp"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
-            android:text="@string/hovedmeny" />
+            android:backgroundTint="#0FFFFFFF"
+            android:fontFamily="@font/coming_soon"
+            android:text="@string/hovedmeny"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/spillPaaNyttResButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="50dp"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
-            android:text="@string/spill_p_nytt" />
+            android:backgroundTint="#0FFFFFFF"
+            android:fontFamily="@font/coming_soon"
+            android:text="@string/spill_p_nytt"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

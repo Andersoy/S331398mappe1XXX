@@ -12,17 +12,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.9"
-        android:orientation="vertical">
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:text="@string/forrige_spill"
-        android:textSize="36sp" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/coming_soon"
+            android:text="@string/forrige_spill"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/antOpgForrigeTextView"
@@ -31,43 +32,46 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/antall_oppgaver_0"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:fontFamily="@font/coming_soon"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp">
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="13dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="50dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginLeft="100dp"
                 app:srcCompat="@drawable/thumbsup" />
 
             <TextView
                 android:id="@+id/antRiktigeSvarForrigeTextView"
                 android:layout_width="50dp"
-
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="0"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/coming_soon" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="13dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="50dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginLeft="100dp"
                 app:srcCompat="@drawable/thumbsdown" />
 
@@ -78,13 +82,14 @@
                 android:layout_gravity="center_horizontal"
                 android:text="0"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/coming_soon" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="260dp"
-            android:layout_height="38dp"
+            android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/kritt" />
 
@@ -93,7 +98,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2.5"
+        android:layout_weight="2"
         android:orientation="vertical">
 
         <TextView
@@ -101,8 +106,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/coming_soon"
             android:text="@string/alle_spill"
-            android:textSize="36sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/totaltAntSpillAlleTextView"
@@ -111,7 +117,9 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/antall_spill_0"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:fontFamily="@font/coming_soon"
+            />
 
         <TextView
             android:id="@+id/totAntOpgAlleTextView"
@@ -120,35 +128,66 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/antall_oppgaver_0"
             android:textAlignment="center"
-            android:textSize="18sp" />
-
-
-
-        <TextView
-            android:id="@+id/totAntRiktigeAlleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="0"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/totAntFeilSvarAlleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="0"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:fontFamily="@font/coming_soon"
+            />
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
             android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="100dp"
+                app:srcCompat="@drawable/thumbsup" />
+
+            <TextView
+                android:id="@+id/totAntRiktigeAlleTextView"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:fontFamily="@font/coming_soon" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="100dp"
+                app:srcCompat="@drawable/thumbsdown" />
+
+            <TextView
+                android:id="@+id/totAntFeilSvarAlleTextView"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:fontFamily="@font/coming_soon" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
 
             <Button
                 android:id="@+id/nullstillButton"
@@ -157,8 +196,10 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
-                android:backgroundTint="#0AFFFFFF"
-                android:text="@string/nullstill" />
+                android:backgroundTint="#1AFFFFFF"
+                android:fontFamily="@font/coming_soon"
+                android:text="@string/nullstill"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/hovedmenyStatButton"
@@ -167,8 +208,10 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:backgroundTint="#0AFFFFFF"
-                android:text="@string/hovedmeny" />
+                android:backgroundTint="#1AFFFFFF"
+                android:fontFamily="@font/coming_soon"
+                android:text="@string/hovedmeny"
+                android:textStyle="bold" />
         </LinearLayout>
 
 

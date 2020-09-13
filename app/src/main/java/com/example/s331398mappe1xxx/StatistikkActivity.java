@@ -66,24 +66,13 @@ public class StatistikkActivity extends AppCompatActivity {
         hovedmenyButton = findViewById(R.id.hovedmenyStatButton);
 
         /**Legger inn korrekt tekst og tall til textview*/
-        antOppgForrigeTextView.setText(getResources().getString(R.string.antallOppgaver)+antallOppgaverForrige);
-
-        //antRiktigeForrigeTextView.setText(getResources().getString(R.string.antallRiktigeSvar)+antallRiktigSvarForrige);
+        antOppgForrigeTextView.setText(getResources().getString(R.string.antallOppgaver)+" "+antallOppgaverForrige);
         antRiktigeForrigeTextView.setText(""+antallRiktigSvarForrige);
-
-        //antFeilForrigeTextView.setText(getResources().getString(R.string.antallFeilSvar)+antallFeilSvarForrige);
         antFeilForrigeTextView.setText(""+antallFeilSvarForrige);
 
-        totAntSpillTextView.setText(getResources().getString(R.string.antallSpill)+totAntSpill);
-
-        totAntOpgTextView.setText(getResources().getString(R.string.antallOppgaver)+totAntOppg);
-
-        //totAntRktgTextView.setText(getResources().getString(R.string.antallRiktigeSvar)+totAntRiktig);
-
-        //totAntFeilTextView.setText(getResources().getString(R.string.antallFeilSvar)+totAntFeil);
-
+        totAntSpillTextView.setText(getResources().getString(R.string.antallSpill)+" "+totAntSpill);
+        totAntOpgTextView.setText(getResources().getString(R.string.antallOppgaver)+" "+totAntOppg);
         totAntRktgTextView.setText(""+totAntRiktig);
-
         totAntFeilTextView.setText(""+totAntFeil);
 
         /**Setter onClick med dialog til nullstillknappen*/

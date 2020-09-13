@@ -26,7 +26,8 @@
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/coming_soon"
         android:text="@string/spill"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/statistikkKnapp"
@@ -38,7 +39,8 @@
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/coming_soon"
         android:text="@string/statistikk"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/preferanseKnapp"
@@ -50,6 +52,7 @@
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/coming_soon"
         android:text="@string/preferanser"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

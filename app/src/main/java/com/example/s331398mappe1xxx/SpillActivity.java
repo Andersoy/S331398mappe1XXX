@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -239,6 +240,7 @@ public class SpillActivity extends AppCompatActivity {
           * holder styr på antall riktige og gale svar*/
          int intSvar = utvalgteSvar[teller];
          String tilbakemelding;
+
          if (intSvar == svar) {
              tilbakemelding = svar + " " + getString(R.string.riktigSvarTilbakemelding);
              antallRiktigeSvar++;

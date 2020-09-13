@@ -35,7 +35,9 @@
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.2"
                 android:text="0"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:fontFamily="@font/coming_soon"
+                />
 
             <ImageButton
                 android:id="@+id/avsluttSpillKnapp"
@@ -56,7 +58,8 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/oppgaver_vises_her"
             android:textAlignment="center"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            android:fontFamily="@font/coming_soon" />
 
         <ImageView
             android:id="@+id/understrek"
@@ -77,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="= "
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:fontFamily="@font/coming_soon" />
 
             <TextView
                 android:id="@+id/innfyllingTextview"
@@ -85,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center"
-                android:textSize="36sp" />
+                android:textSize="36sp"
+                android:fontFamily="@font/coming_soon" />
 
         </LinearLayout>
 
@@ -103,7 +108,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="1"
             android:textSize="24sp" />
 
@@ -112,7 +117,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="2"
             android:textSize="24sp" />
 
@@ -121,7 +126,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="3"
             android:textSize="24sp" />
     </LinearLayout>
@@ -138,7 +143,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="4"
             android:textSize="24sp" />
 
@@ -147,7 +152,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="5"
             android:textSize="24sp" />
 
@@ -156,7 +161,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="6"
             android:textSize="24sp" />
     </LinearLayout>
@@ -173,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="7"
             android:textSize="24sp" />
 
@@ -182,7 +187,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="8"
             android:textSize="24sp" />
 
@@ -191,7 +196,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="9"
             android:textSize="24sp" />
     </LinearLayout>
@@ -210,18 +215,18 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
+            android:elevation="2dp"
             android:scaleType="centerInside"
             android:src="@drawable/slett"
-            android:textSize="24sp"
-            android:elevation="2dp"/>
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/knapp0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
             android:text="0"
             android:textSize="24sp" />
 
@@ -230,11 +235,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#0AFFFFFF"
+            android:backgroundTint="#0FFFFFFF"
+            android:elevation="2dp"
             android:scaleType="centerInside"
             android:src="@drawable/send"
-            android:textSize="24sp"
-            android:elevation="2dp"/>
+            android:textSize="24sp" />
 
 
     </LinearLayout>
