@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     // TODO: Legge inn private der egnet i alle aktiviteter?
     // TODO: Landscapemode
     // TODO: Juster layout etter designregler
-    // TODO: lag fragmenter for ja nei boksene
+
     // TODO: Nye oppgaver
     // TODO: Oversette gjenværende til tysk
     // TODO: Rapport
@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         /**Dersom første gang man spiller lagres landskode "no" i sharedpreferences */
-        if(!deltePreferanser.getString("spraakKode", null).equals("no") &&
-                !deltePreferanser.getString("spraakKode", null).equals("de")){
+        if(deltePreferanser.getString("spraakKode", null) == null){
             editor.putString("spraakKode", "no");
             editor.commit();
             Locale mittSpraak = new Locale("no");

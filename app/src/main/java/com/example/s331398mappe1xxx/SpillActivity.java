@@ -1,14 +1,12 @@
 package com.example.s331398mappe1xxx;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -21,9 +19,9 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 
-public class SpillActivity extends AppCompatActivity {
+public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDialog.DialogClickListener{
 
-    private TextView oppgaveTextView, erlikTextview, innfyllingTextview, riktigeCounter;
+    private TextView oppgaveTextView, erlikTextview, innfyllingTextview, riktigeCounter, feilCounter;
     Button knapp0, knapp1, knapp2, knapp3, knapp4, knapp5, knapp6, knapp7, knapp8, knapp9;
     private ImageButton slettKnapp, avsluttSpillKnapp, leverKnapp;;
     private ImageView understrek;
@@ -56,6 +54,7 @@ public class SpillActivity extends AppCompatActivity {
         erlikTextview = findViewById(R.id.erlikTextView);
         innfyllingTextview = findViewById(R.id.innfyllingTextview);
         riktigeCounter = findViewById(R.id.riktigeCounter);
+        feilCounter = findViewById(R.id.feilCounter);
         understrek = findViewById(R.id.understrek);
 
         avsluttSpillKnapp = findViewById(R.id.avsluttSpillKnapp);
@@ -80,15 +79,13 @@ public class SpillActivity extends AppCompatActivity {
             innfyllingTextview.setText(svar);
         });
 
-        /** Kjører metode som kontrollerer om spilleren har trykket på riktig svar og gir tilbakemelding
-         * ved knapptrykk*/
+        /** Kjører metode som sjekker om brukerens svar er riktig og gir tilbakemelding*/
         leverKnapp.setOnClickListener(view -> {
             sjekkBrukerSvar();
         });
-        /** Kjører metode som åpner dialogboks og spør om spiller ønsker å avslutte spillet ved
-         * knapptrykk */
+        /** Kjører metode som åpner dialogboks og spør om spiller ønsker å avslutte spillet ved knapptrykk */
         avsluttSpillKnapp.setOnClickListener(view -> {
-            avsluttDialog();
+            visKonfirmasjonsDialog();
         });
 
         startSpill();
@@ -97,27 +94,24 @@ public class SpillActivity extends AppCompatActivity {
     /**Overstyrer tilbakeknappen på mobilen til å åpne avsluttdialogen*/
     @Override
     public void onBackPressed() {
-        avsluttDialog();
+        visKonfirmasjonsDialog();
+    }
+
+    @Override
+    public void onYesClick() {
+        editor.putBoolean("aktivtSpill", false);
+        finish();
+    }
+
+    @Override
+    public void onNoClick() {
+        return;
     }
 
     /**Dialogen gir brukeren muligheten til å kansellere avsluttingen av spillet*/
-    //TODO: Forandre?
-    void avsluttDialog(){
-        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
-            switch (which){
-                case DialogInterface.BUTTON_POSITIVE:
-                    editor.putBoolean("aktivtSpill", false);
-                    finish();
-                case DialogInterface.BUTTON_NEGATIVE:
-                    //do nothing
-                    break;
-            }
-        };
-        String erDuSikker = getString(R.string.er_du_sikker);
-        String ja= getString(R.string.ja);
-        String nei = getString(R.string.nei);
-        AlertDialog.Builder builder = new AlertDialog.Builder(SpillActivity.this);
-        builder.setMessage(erDuSikker).setPositiveButton(ja, dialogClickListener).setNegativeButton(nei, dialogClickListener).show();
+    public void visKonfirmasjonsDialog() {
+        DialogFragment dialog = new KonfirmasjonsDialog();
+        dialog.show(getSupportFragmentManager(), "Avslutt");
     }
 
     /**Metode som bytter språk*/
@@ -143,38 +137,15 @@ public class SpillActivity extends AppCompatActivity {
         /**Sjekker om et aktivt spill er i gang for å unngå nullstilling ved rotasjon og går inn i if-setningen
          * dersom et spill ikke allerede er i gang*/
         if(!deltePreferanser.getBoolean("aktivtSpill", false)){
-            /**Oppretter array av oppgavene og svarene fra values/arrays.xml*/
-            String [] arrayAlleOppgaver = getResources().getStringArray(R.array.Oppgaver);
-            int[] arrayAlleSvar = getResources().getIntArray(R.array.Svar);
 
             teller = 0;
-            String alleOppgaver = "";
-            String alleSvar = "";
-
-            /**lager en liste med tilfeldige tall mellom 1 og 25. Listen er like lang som antall oppgaver man har valgt*/
-            /** og ingen tall gjentar seg.*/
-            Random randomGenerator = new Random();
-            ArrayList<Integer> tilfeldigeTall = new ArrayList<Integer>();
-            while (tilfeldigeTall.size() < antallOppgaver) {
-                int random = randomGenerator.nextInt(25);
-                if (!tilfeldigeTall.contains(random)) {
-                    tilfeldigeTall.add(random);
-                }
-            }
-
-            /** Henter oppgaver og svar fra oppgave-/svar-array ved hjelp av de ikke-repeterende tilfeldige
-             * indeksene og legger dem inn i strenger,separert med komma, for lagring i sharedpreferences,
-             * (Lagrer det som streng separert med komma istedenfor jason)*/
-            for(int i = 0; i < antallOppgaver; i++){
-                    alleOppgaver += arrayAlleOppgaver[tilfeldigeTall.get(i)]+",";
-            }
-            for(int i = 0; i < antallOppgaver; i++){
-                alleSvar += arrayAlleSvar[tilfeldigeTall.get(i)]+",";
-            }
+            String[] oppgaverOgSvarIFellesArray = LagNyttSettMedOppgaver();
+            String valgteOppgaver = oppgaverOgSvarIFellesArray[0];
+            String valgteSvar = oppgaverOgSvarIFellesArray[1];
 
             /**Lagrer oppgave-og svar-strenger, teller og spillstatus i sharedpreferences*/
-            editor.putString("aktivRundeOppgaver", alleOppgaver);
-            editor.putString("aktivRundeSvar", alleSvar);
+            editor.putString("aktivRundeOppgaver", valgteOppgaver);
+            editor.putString("aktivRundeSvar", valgteSvar);
             editor.putInt("oppgaveTeller", teller);
             editor.putBoolean("aktivtSpill", true);
             editor.commit();
@@ -185,40 +156,81 @@ public class SpillActivity extends AppCompatActivity {
             antallRiktigeSvar = deltePreferanser.getInt("aktiveRiktige",0);
             antallGaleSvar = deltePreferanser.getInt("aktiveFeil",0);
             riktigeCounter.setText(String.valueOf(antallRiktigeSvar));
+            feilCounter.setText(String.valueOf(antallGaleSvar));
         }
 
-        /**Konverterer svar og oppgavestrenger tilbake til arrays*/
+        /**Henter svar og oppgavestrenger og konverterer dem tilbake til arrays*/
+        hentOppgaveneFraPreferanser();
+
+        /**skriver første oppgave til skjerm*/
+        nyttRegnestykke();
+    }
+
+    void hentOppgaveneFraPreferanser(){
         utvalgteOppgaver = new String[antallOppgaver];
         utvalgteSvar = new int[antallOppgaver];
+
         String mellomlagring = deltePreferanser.getString("aktivRundeOppgaver", null);
         String[] mellomlagringSplit = mellomlagring.split(",");
         for(int i = 0; i<antallOppgaver; i++){
             utvalgteOppgaver[i] = mellomlagringSplit[i];
         }
+
         mellomlagring = deltePreferanser.getString("aktivRundeSvar", null);
         mellomlagringSplit = mellomlagring.split(",");
         for(int i = 0; i<antallOppgaver; i++){
             utvalgteSvar[i] = Integer.parseInt(mellomlagringSplit[i]);
         }
+    }
 
-        /**skriver første oppgave til skjerm*/
-        nyttRegnestykke();
+    String[] LagNyttSettMedOppgaver(){
+
+        /**Oppretter array av oppgavene og svarene fra values/arrays.xml*/
+        String [] arrayAlleOppgaver = getResources().getStringArray(R.array.Oppgaver);
+        int[] arrayAlleSvar = getResources().getIntArray(R.array.Svar);
+
+        /**lager en liste med tilfeldige tall mellom 1 og 25. Listen er like lang som antall oppgaver man har valgt*/
+        /** og ingen tall gjentar seg.*/
+        Random randomGenerator = new Random();
+        ArrayList<Integer> tilfeldigeTall = new ArrayList<Integer>();
+        while (tilfeldigeTall.size() < antallOppgaver) {
+            int random = randomGenerator.nextInt(25);
+            if (!tilfeldigeTall.contains(random)) {
+                tilfeldigeTall.add(random);
+            }
+        }
+
+        /** Henter oppgaver og svar fra oppgave-/svar-array ved hjelp av de ikke-repeterende tilfeldige
+         * indeksene og legger dem inn i strenger,separert med komma, for lagring i sharedpreferences,
+         * (Lagrer det som streng separert med komma istedenfor jason)*/
+        String valgteOppgaver = "";
+        String valgteSvar = "";
+        for(int i = 0; i < antallOppgaver; i++){
+            valgteOppgaver += arrayAlleOppgaver[tilfeldigeTall.get(i)]+",";
+        }
+        for(int i = 0; i < antallOppgaver; i++){
+            valgteSvar += arrayAlleSvar[tilfeldigeTall.get(i)]+",";
+        }
+
+        /** Returnerer de valgte oppgavene og svarene i en felles array*/
+        String[] oppgaverOgSvar = new String[2];
+        oppgaverOgSvar[0] = valgteOppgaver;
+        oppgaverOgSvar[1] = valgteSvar;
+
+        return oppgaverOgSvar;
     }
 
     /**Fyller inn ønsket siffer bakerst i innføringsfeltet */
     void fyllInn(int tall){
         String svar = innfyllingTextview.getText().toString();
         /** sikrer at kanppen ikke gjør noe i ventemodus eller øker siffer antallet over int grensen(8)*/
-        if(venter || svar.length() > 8){
-            return;
-        }
+        if(venter || svar.length() > 8){ return; }
         svar = svar + tall;
         innfyllingTextview.setText(svar);
     }
 
     /** kontrollerer om spilleren har trykket på riktig svar og gir tilbakemelding*/
      void sjekkBrukerSvar(){
-
          /** sikrer at kanppen ikke gjør noe når brukeren får tilbakemelding*/
          if(venter){
              return;
@@ -250,11 +262,13 @@ public class SpillActivity extends AppCompatActivity {
          } else if (svar == -1){
              tilbakemelding = getString(R.string.blanktSvarTilbakemelding) + " " + intSvar;
              antallGaleSvar++;
+             feilCounter.setText(String.valueOf(antallGaleSvar));
              editor.putInt("aktiveFeil", antallGaleSvar);
 
          } else{
              tilbakemelding = svar + " " + getString(R.string.feilSvarTilbakemelding) + " " + intSvar;
              antallGaleSvar++;
+             feilCounter.setText(String.valueOf(antallGaleSvar));
              editor.putInt("aktiveFeil", antallGaleSvar);
          }
 
@@ -286,16 +300,16 @@ public class SpillActivity extends AppCompatActivity {
             understrek.setVisibility(View.VISIBLE);
         } else {
             /** Lagrer antallRiktigeSvar, antallGaleSvar og antallOppgaver til statistikksiden.*/
-            lagre();
+            lagreFerdigSpill();
 
-            /**Bytter til resultatsiden*/
+            /**Går til resultatsiden*/
             Intent byttTilNyActivity = new Intent(getApplicationContext(), ResultatActivity.class);
             startActivity(byttTilNyActivity);
             finish();
         }
     }
 
-    void lagre(){
+    void lagreFerdigSpill(){
         /**Oppdaterer "Forrige spill"*/
         editor.putInt("AntallOppgaverForrige", antallOppgaver);
         editor.putInt("AntallRiktigeForrige", antallRiktigeSvar);

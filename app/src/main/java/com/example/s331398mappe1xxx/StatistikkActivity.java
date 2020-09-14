@@ -1,6 +1,7 @@
 package com.example.s331398mappe1xxx;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,7 +17,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-public class StatistikkActivity extends AppCompatActivity {
+public class StatistikkActivity extends AppCompatActivity implements KonfirmasjonsDialog.DialogClickListener{
 
     private Button nullstillButton,  hovedmenyButton;
     TextView antOppgForrigeTextView, antRiktigeForrigeTextView, antFeilForrigeTextView, totAntSpillTextView, totAntOpgTextView, totAntRktgTextView, totAntFeilTextView;
@@ -30,6 +31,8 @@ public class StatistikkActivity extends AppCompatActivity {
     int totAntFeil;
 
     SharedPreferences deltePreferanser;
+    SharedPreferences.Editor editor;
+    DialogFragment dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class StatistikkActivity extends AppCompatActivity {
 
         /**Henter inn alle verdier fra sharedpreferences*/
         deltePreferanser = getApplicationContext().getSharedPreferences("StatistikkOgPreferanser", 0);
+        editor = deltePreferanser.edit();
 
         if(!getResources().getConfiguration().locale.toString().equals(deltePreferanser.getString("spraakKode", null))){
             forandreSpraak(deltePreferanser.getString("spraakKode", null));
@@ -77,22 +81,7 @@ public class StatistikkActivity extends AppCompatActivity {
 
         /**Setter onClick med dialog til nullstillknappen*/
         nullstillButton.setOnClickListener(view -> {
-                DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
-                    switch (which){
-                        case DialogInterface.BUTTON_POSITIVE:
-                            nullstillVerdier();
-                            finish();
-                            startActivity(getIntent());
-                        case DialogInterface.BUTTON_NEGATIVE:
-                            //do nothing
-                            break;
-                    }
-                };
-                String erDuSikker = getString(R.string.er_du_sikker);
-                String ja= getString(R.string.ja);
-                String nei = getString(R.string.nei);
-                AlertDialog.Builder builder = new AlertDialog.Builder(StatistikkActivity.this);
-                builder.setMessage(erDuSikker).setPositiveButton(ja, dialogClickListener).setNegativeButton(nei, dialogClickListener).show();
+                visKonfirmasjonsDialog();
             });
 
         /**onClick-metode som bytter activity til hovedmeny*/
@@ -103,7 +92,6 @@ public class StatistikkActivity extends AppCompatActivity {
 
     /**Metode som bytter språk*/
     public void forandreSpraak(String landskode){
-        SharedPreferences.Editor editor = deltePreferanser.edit();
         editor.putString("spraakKode", landskode);
         editor.commit();
 
@@ -117,8 +105,6 @@ public class StatistikkActivity extends AppCompatActivity {
     }
 
     void nullstillVerdier(){
-        SharedPreferences.Editor editor = deltePreferanser.edit();
-
         /** Sletter spesifikke verdier for å nullstille statistikken, ikke preferanser*/
         editor.remove("AntallOppgaverForrige");
         editor.remove("AntallRiktigeForrige");
@@ -127,8 +113,23 @@ public class StatistikkActivity extends AppCompatActivity {
         editor.remove("TotaltAntOppgaver");
         editor.remove("TotaltRiktig");
         editor.remove("TotaltFeil");
-
         editor.commit();
+    }
+    @Override
+    public void onYesClick() {
+        nullstillVerdier();
+        dialog.dismiss();
         recreate();
+    }
+
+    @Override
+    public void onNoClick() {
+        return;
+    }
+
+    /**Dialogen gir brukeren muligheten til å kansellere avsluttingen av spillet*/
+    public void visKonfirmasjonsDialog() {
+        dialog = new KonfirmasjonsDialog();
+        dialog.show(getSupportFragmentManager(), "Avslutt");
     }
 }

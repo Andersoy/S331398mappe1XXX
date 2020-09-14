@@ -33,11 +33,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_weight="0.2"
-                android:text="0"
-                android:textSize="24sp"
+                android:layout_weight="0.3"
                 android:fontFamily="@font/coming_soon"
-                />
+                android:text="0"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/uncheck" />
+
+            <TextView
+                android:id="@+id/feilCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/coming_soon"
+                android:text="0"
+                android:textSize="24sp" />
 
             <ImageButton
                 android:id="@+id/avsluttSpillKnapp"
@@ -45,8 +63,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|top"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp"
                 android:backgroundTint="#0AFFFFFF"
                 android:src="@drawable/exit" />
         </LinearLayout>
