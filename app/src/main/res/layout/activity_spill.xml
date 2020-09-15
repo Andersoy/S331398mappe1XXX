@@ -73,10 +73,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/coming_soon"
             android:text="@string/oppgaver_vises_her"
             android:textAlignment="center"
-            android:textSize="36sp"
-            android:fontFamily="@font/coming_soon" />
+            android:textSize="36sp" />
 
         <ImageView
             android:id="@+id/understrek"
