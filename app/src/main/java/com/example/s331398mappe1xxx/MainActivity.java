@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     //ting å gå gjennom felles:
-    // TODO: Kommenter koden
+    // TODO: Se over og kommenter koden
     // TODO: Landscapemode
     // TODO: Juster layout etter designregler
     // TODO: Rapport
@@ -45,14 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         /**Dersom første gang man spiller lagres landskode "no" i sharedpreferences */
         if(deltePreferanser.getString("spraakKode", null) == null){
-            editor.putString("spraakKode", "no");
-            editor.commit();
-            Locale mittSpraak = new Locale("no");
-            Resources ress = getResources();
-            DisplayMetrics visMet = ress.getDisplayMetrics();
-            Configuration konfigurasjon = ress.getConfiguration();
-            konfigurasjon.setLocale(mittSpraak);
-            ress.updateConfiguration(konfigurasjon, visMet);
+            forandreSpraak("no");
         }
 
         /** Kontrollerer at riktig språk valgt ved onCreate() for å unngå at det skifter tilbake til default språk ved rotasjon.
@@ -86,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**Metode som bytter språk*/
      private void forandreSpraak(String landskode){
-        SharedPreferences.Editor editor = deltePreferanser.edit();
+        editor = deltePreferanser.edit();
         editor.putString("spraakKode", landskode);
         editor.commit();
 
@@ -99,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
         recreate();
     }
 
-    //TODO: Er dette en ok måte å løse problemet med at parent ikke oppdaterer seg ved barnets finish()?
+    //TODO: Spør lærer
+    //Er dette en ok måte å løse problemet med at parent ikke oppdaterer seg ved barnets finish()?
     @Override
     protected void onResume() {
         super.onResume();
@@ -110,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             forandreSpraak(deltePreferanser.getString("spraakKode", null));
         }
 
-        // TODO: spør lærer
+        // TODO: Spør lærer
         //Kjøres onResume ved onCreate()? Og er det i så fall dumt at denne kodebiten kjøres to ganger?
         /**Nullstiller verdiene i sharedpreferences ved retur fra barneaktiviteter, hovedsaklig spillaktivitet*/
         editor.putBoolean("aktivtSpill", false);
