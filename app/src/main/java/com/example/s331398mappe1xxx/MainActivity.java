@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     //ting å gå gjennom felles:
-    // TODO: Se over og kommenter koden
+    // TODO: Se over og kommenter koden noe
     // TODO: Landscapemode
     // TODO: Juster layout etter designregler
     // TODO: Rapport
