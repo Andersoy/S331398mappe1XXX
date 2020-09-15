@@ -33,6 +33,8 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
     private int antallRiktigeSvar;
     private int antallGaleSvar;
     private boolean venter = false;
+    int riktigSvar;
+    int brukerSvar;
 
     SharedPreferences deltePreferanser;
     SharedPreferences.Editor editor;
@@ -236,13 +238,13 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
              return;
          }
 
+         /**Sjekker om tekstfeltet ikke er tomt, setter flagg -1 for tomt felt siden det ikke kan parses til int*/
          String svarStreng = innfyllingTextview.getText().toString();
-         /** setter flagg -1 for tomt felt siden det ikke kan parses til int*/
-         int svar = -1;
-         /**Sjekker om tekstfeltet ikke er tomt*/
+         brukerSvar = -1;
          if (!svarStreng.isEmpty()){
-             svar = Integer.parseInt(svarStreng);
+             brukerSvar = Integer.parseInt(svarStreng);
          }
+
          /**Gjemmer oppgaverelaterte views for å klargjøre for tilbakemelding */
          innfyllingTextview.setText("");
          erlikTextview.setText("");
@@ -250,45 +252,60 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
 
          /**Sjekker om svaret er riktig og gir tilbakemelding basert på svaret. Øker også tellere som
           * holder styr på antall riktige og gale svar*/
-         int intSvar = utvalgteSvar[teller];
-         String tilbakemelding;
+         riktigSvar = utvalgteSvar[teller];
 
-         if (intSvar == svar) {
-             tilbakemelding = svar + " " + getString(R.string.riktigSvarTilbakemelding);
-             antallRiktigeSvar++;
-             riktigeCounter.setText(String.valueOf(antallRiktigeSvar));
-             editor.putInt("aktiveRiktige", antallRiktigeSvar);
-
-         } else if (svar == -1){
-             tilbakemelding = getString(R.string.blanktSvarTilbakemelding) + " " + intSvar;
-             antallGaleSvar++;
-             feilCounter.setText(String.valueOf(antallGaleSvar));
-             editor.putInt("aktiveFeil", antallGaleSvar);
-
+         /** sjekker om svaret er riktig fel eller blank og gir tilhørende tilbakemelding*/
+         if (riktigSvar == brukerSvar) {
+             giTilbakemelding("riktigSvar");
+         } else if (brukerSvar == -1){
+             giTilbakemelding("blanktSvar");
          } else{
-             tilbakemelding = svar + " " + getString(R.string.feilSvarTilbakemelding) + " " + intSvar;
-             antallGaleSvar++;
-             feilCounter.setText(String.valueOf(antallGaleSvar));
-             editor.putInt("aktiveFeil", antallGaleSvar);
+             giTilbakemelding("feilSvar");
          }
 
-         editor.commit();
-         oppgaveTextView.setText(tilbakemelding);
-         oppgaveTextView.setTextSize(30);
+    }
 
-         /** Følgende utføres for å få programmet til å vente 2 sekunder mellom spørsmålene slik at
-          * spilleren kan se om de har svar riktig eller galt*/
-         venter = true;
-         final Handler barnevakt = new Handler();
-         barnevakt.postDelayed(() -> {
-             /**Øker teller som viser hvilken oppgave/svar man er på.*/
-             teller++;
-             editor.putInt("oppgaveTeller", teller);
-             editor.commit();
-             venter = false;
-             nyttRegnestykke();
-             //TODO: Øke ventetiden før levering av app?
-         }, 1000);
+    void giTilbakemelding(String tilbakemeldingsType) {
+
+        String tilbakemelding;
+
+        switch (tilbakemeldingsType) {
+            case "riktigSvar":
+                tilbakemelding = brukerSvar + " " + getString(R.string.riktigSvarTilbakemelding);
+                antallRiktigeSvar++;
+                riktigeCounter.setText(String.valueOf(antallRiktigeSvar));
+                editor.putInt("aktiveRiktige", antallRiktigeSvar);
+                break;
+            case "blanktSvar":
+                tilbakemelding = getString(R.string.blanktSvarTilbakemelding) + " " + riktigSvar;
+                antallGaleSvar++;
+                feilCounter.setText(String.valueOf(antallGaleSvar));
+                editor.putInt("aktiveFeil", antallGaleSvar);
+                break;
+            default:
+                tilbakemelding = brukerSvar + " " + getString(R.string.feilSvarTilbakemelding) + " " + riktigSvar;
+                antallGaleSvar++;
+                feilCounter.setText(String.valueOf(antallGaleSvar));
+                editor.putInt("aktiveFeil", antallGaleSvar);
+                break;
+        }
+        editor.commit();
+        oppgaveTextView.setText(tilbakemelding);
+        oppgaveTextView.setTextSize(30);
+
+        /** Følgende utføres for å få programmet til å vente 2 sekunder mellom spørsmålene slik at
+         * spilleren kan se om de har svar riktig eller galt*/
+        venter = true;
+        final Handler barnevakt = new Handler();
+        barnevakt.postDelayed(() -> {
+            /**Øker teller som viser hvilken oppgave/svar man er på.*/
+            teller++;
+            editor.putInt("oppgaveTeller", teller);
+            editor.commit();
+            venter = false;
+            nyttRegnestykke();
+            //TODO: Øke ventetiden før levering av app?
+        }, 1000);
     }
 
     void nyttRegnestykke(){
