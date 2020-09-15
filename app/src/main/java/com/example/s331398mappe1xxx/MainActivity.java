@@ -13,14 +13,17 @@ import android.widget.Button;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+    //ting å gå gjennom felles:
     // TODO: Kommenter koden
-    // TODO: Legge inn private der egnet i alle aktiviteter?
     // TODO: Landscapemode
     // TODO: Juster layout etter designregler
-
-    // TODO: Nye oppgaver
-    // TODO: Oversette gjenværende til tysk
     // TODO: Rapport
+
+    //ting som kan gjøres hver for oss:
+    // TODO: Legge inn private der egnet i alle aktiviteter?
+    // TODO: Oversette gjenværende til tysk
+    // TODO: Lag universell endre språk metode for alle klassene
+    // TODO: Lag universell endre språk metode for alle klassene
 
     private Button spillKnapp, preferanseKnapp, statistikkKnapp;
     SharedPreferences deltePreferanser;
