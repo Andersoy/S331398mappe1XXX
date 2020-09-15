@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_weight="0.3"
+                android:layout_weight="0.1"
                 android:fontFamily="@font/coming_soon"
                 android:text="0"
                 android:textSize="24sp" />
@@ -42,9 +42,8 @@
                 android:id="@+id/imageView7"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_weight="0"
+                android:layout_weight="0 "
                 app:srcCompat="@drawable/uncheck" />
 
             <TextView
