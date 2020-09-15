@@ -12,8 +12,8 @@ public class KonfirmasjonsDialog extends DialogFragment {
     private DialogClickListener callback;
 
     public interface DialogClickListener {
-        public void onYesClick();
-        public void onNoClick();
+        void onYesClick();
+        void onNoClick();
     }
 
     @Override

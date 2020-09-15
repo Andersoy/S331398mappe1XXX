@@ -14,7 +14,7 @@ import java.util.Locale;
 public class PreferanseActivity extends AppCompatActivity {
 
     private Button oppgaver5Button, oppgaver10Button, oppgaver25Button, norskButton, tyskButton, hovedmenyButton;
-    SharedPreferences deltePreferanser;
+    private SharedPreferences deltePreferanser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class PreferanseActivity extends AppCompatActivity {
     }
 
     /**Metode som forandrer skriftstørrelsen på valgt knapp*/
-    void markerKnapp(int antallOppgaver){
+    private void markerKnapp(int antallOppgaver){
         if(antallOppgaver==5){
             oppgaver5Button.setTextSize(27);
             oppgaver10Button.setTextSize(14);
@@ -84,7 +84,7 @@ public class PreferanseActivity extends AppCompatActivity {
         }
     }
     /**Metode som oppdaterer antall oppgaver i sharedpreferences*/
-    void bytteAntallOppgaver(int antallOpg){
+    private void bytteAntallOppgaver(int antallOpg){
         SharedPreferences.Editor editor = deltePreferanser.edit();
         editor.putInt("AntallOppgaver", antallOpg);
         editor.commit();

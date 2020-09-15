@@ -17,13 +17,11 @@ import java.util.Locale;
 public class ResultatActivity extends AppCompatActivity {
 
     ImageView smilefjes;
-    Button hovedmenyButton, nyttSpillButton;
-    TextView tilbakemelding, antallRiktigeSvarResTextView, antallFeilSvarResTextView;
-    SharedPreferences deltePreferanser;
-    int antallOppgaver;
-    int antallRiktigSvar;
-    int antallFeilSvar;
-    String tilbakemeldingstring;
+    private Button hovedmenyButton, nyttSpillButton;
+    private TextView tilbakemelding, antallRiktigeSvarResTextView, antallFeilSvarResTextView;
+    private SharedPreferences deltePreferanser;
+    private int antallOppgaver, antallRiktigSvar, antallFeilSvar;
+    private String tilbakemeldingstring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +57,7 @@ public class ResultatActivity extends AppCompatActivity {
     }
 
     /**Metode som bytter språk*/
-    public void forandreSpraak(String landskode){
+    private void forandreSpraak(String landskode){
         SharedPreferences.Editor editor = deltePreferanser.edit();
         editor.putString("spraakKode", landskode);
         editor.commit();
@@ -73,7 +71,7 @@ public class ResultatActivity extends AppCompatActivity {
         recreate();
     }
 
-    void giTilbakemelding(){
+    private void giTilbakemelding(){
 
         /** Henter resultatet*/
         antallOppgaver = deltePreferanser.getInt("AntallOppgaverForrige", 0);

@@ -20,14 +20,13 @@ public class MainActivity extends AppCompatActivity {
     // TODO: Rapport
 
     //ting som kan gjøres hver for oss:
-    // TODO: Legge inn private der egnet i alle aktiviteter?
     // TODO: Oversette gjenværende til tysk
-    // TODO: Lag universell endre språk metode for alle klassene
     // TODO: Lag universell endre språk metode for alle klassene
 
     private Button spillKnapp, preferanseKnapp, statistikkKnapp;
-    SharedPreferences deltePreferanser;
-    SharedPreferences.Editor editor;
+    private SharedPreferences deltePreferanser;
+    private SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**Metode som bytter språk*/
-     public void forandreSpraak(String landskode){
+     private void forandreSpraak(String landskode){
         SharedPreferences.Editor editor = deltePreferanser.edit();
         editor.putString("spraakKode", landskode);
         editor.commit();
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         Resources ress = getResources();
         DisplayMetrics visMet = ress.getDisplayMetrics();
         Configuration konfigurasjon = ress.getConfiguration();
-         konfigurasjon.setLocale(mittSpraak);
+        konfigurasjon.setLocale(mittSpraak);
         ress.updateConfiguration(konfigurasjon, visMet);
         recreate();
     }
@@ -111,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
             forandreSpraak(deltePreferanser.getString("spraakKode", null));
         }
 
-        // TODO: Kjøres onResume ved onCreate()? Og er det i så fall dumt at denne kodebiten kjøres to ganger?
+        // TODO: spør lærer
+        //Kjøres onResume ved onCreate()? Og er det i så fall dumt at denne kodebiten kjøres to ganger?
         /**Nullstiller verdiene i sharedpreferences ved retur fra barneaktiviteter, hovedsaklig spillaktivitet*/
         editor.putBoolean("aktivtSpill", false);
         editor.remove("oppgaveTeller");
