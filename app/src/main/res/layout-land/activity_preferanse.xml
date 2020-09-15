@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tavle2"
+    android:orientation="vertical"
+    tools:context=".PreferanseActivity">
+
+    <TextView
+        android:id="@+id/preferanserTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:text="@string/preferanser"
+        android:textSize="30sp"
+        android:fontFamily="@font/coming_soon"
+        />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:text="@string/antall_oppgaver_per_runde"
+        android:textSize="18sp"
+        android:fontFamily="@font/coming_soon"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+
+        <Button
+
+            android:id="@+id/oppgaver5Button"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#0FFFFFFF"
+            android:fontFamily="@font/coming_soon"
+            android:text="5"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/oppgaver10Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#0FFFFFFF"
+            android:fontFamily="@font/coming_soon"
+            android:text="10"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/oppgaver25Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#0FFFFFFF"
+            android:fontFamily="@font/coming_soon"
+            android:text="25"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="236dp"
+        android:layout_height="54dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/kritt" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/spraak"
+        android:textSize="18sp"
+        android:fontFamily="@font/coming_soon"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+
+        <Button
+            android:id="@+id/tysklandButton"
+            android:layout_width="266dp"
+            android:layout_height="68dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/tyskland" />
+
+        <Button
+            android:id="@+id/norgeButton"
+            android:layout_width="266dp"
+            android:layout_height="68dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/norge" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/hovedmenyPrefButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:backgroundTint="#0FFFFFFF"
+        android:fontFamily="@font/coming_soon"
+        android:text="@string/hovedmeny"
+        android:textStyle="bold"/>
+
+</LinearLayout>
