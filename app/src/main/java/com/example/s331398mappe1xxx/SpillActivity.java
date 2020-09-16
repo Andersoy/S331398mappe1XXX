@@ -291,7 +291,6 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
         }
         editor.commit();
         oppgaveTextView.setText(tilbakemelding);
-        oppgaveTextView.setTextSize(30);
 
         /** Følgende utføres for å få programmet til å vente 2 sekunder mellom spørsmålene slik at
          * spilleren kan se om de har svar riktig eller galt*/
@@ -311,7 +310,6 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
     void nyttRegnestykke(){
         /** Skriver nytt regnestykke til skjerm hvis man ikke har fullført alle*/
         if (teller < antallOppgaver) {
-            oppgaveTextView.setTextSize(36);
             oppgaveTextView.setText(utvalgteOppgaver[teller]);
             erlikTextview.setText("= ");
             understrek.setVisibility(View.VISIBLE);

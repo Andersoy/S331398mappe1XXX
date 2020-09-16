@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //TODO: Spør lærer
-    //Er dette en ok måte å løse problemet med at parent ikke oppdaterer seg ved barnets finish()?
     @Override
     protected void onResume() {
         super.onResume();
@@ -104,8 +103,6 @@ public class MainActivity extends AppCompatActivity {
             forandreSpraak(deltePreferanser.getString("spraakKode", null));
         }
 
-        // TODO: Spør lærer
-        //Kjøres onResume ved onCreate()? Og er det i så fall dumt at denne kodebiten kjøres to ganger?
         /**Nullstiller verdiene i sharedpreferences ved retur fra barneaktiviteter, hovedsaklig spillaktivitet*/
         editor.putBoolean("aktivtSpill", false);
         editor.remove("oppgaveTeller");
