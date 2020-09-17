@@ -127,6 +127,7 @@ public class StatistikkActivity extends AppCompatActivity implements Konfirmasjo
     }
 
     /**Dialogen gir brukeren muligheten til å kansellere avsluttingen av spillet*/
+    //TODO: Vi får feil når vi roterer telefonen når dialogboks er oppe. Ser ut som det lett lar seg løse ved å for eksempel lukke dialogboks ved rotasjon
     private void visKonfirmasjonsDialog() {
         dialog = new KonfirmasjonsDialog();
         dialog.show(getSupportFragmentManager(), "Avslutt");

@@ -24,6 +24,8 @@ public class KonfirmasjonsDialog extends DialogFragment {
         } catch (ClassCastException e) {
             throw new ClassCastException("Manglende implimentasjon");
         }
+        //TODO: La inn denne for å unngå crash ved rotasjon når dialogboks er åpen
+
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
