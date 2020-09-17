@@ -13,6 +13,9 @@ public class KonfirmasjonsDialog extends DialogFragment {
     String origin;
     String tittel;
 
+    public KonfirmasjonsDialog() {
+
+    }
     public KonfirmasjonsDialog(String origin) {
         this.origin = origin;
     }
@@ -25,14 +28,14 @@ public class KonfirmasjonsDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         try {
             callback = (DialogClickListener) getActivity();
         } catch (ClassCastException e) {
             throw new ClassCastException("Manglende implimentasjon");
         }
-        //TODO: La inn denne for å unngå crash ved rotasjon når dialogboks er åpen
-
     }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         if(origin.equals("statistikk")){
@@ -44,5 +47,14 @@ public class KonfirmasjonsDialog extends DialogFragment {
                 .setPositiveButton(R.string.ja, (DialogInterface.OnClickListener) (dialog, whichButton) -> callback.onYesClick())
                 .setNegativeButton(R.string.nei, (DialogInterface.OnClickListener) (dialog, whichButton) -> callback.onNoClick())
                 .create();
+    }
+
+    @Override
+    /**for å unngå crash ved rotasjon*/
+    public void onDestroyView() {
+        if (getDialog() != null && getRetainInstance()) {
+            getDialog().setDismissMessage(null);
+        }
+        super.onDestroyView();
     }
 }

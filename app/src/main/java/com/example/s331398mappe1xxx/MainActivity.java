@@ -13,15 +13,6 @@ import android.widget.Button;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    //ting å gå gjennom felles:
-    // TODO: Se over og kommenter koden noe
-    // TODO: Landscapemode
-    // TODO: Juster layout etter designregler
-    // TODO: Rapport
-
-    //ting som kan gjøres hver for oss:
-    // TODO: Lag universell endre språk metode for alle klassene
-    // TODO: lukk dialogboks ved rotasjon i nullstill
 
     private Button spillKnapp, preferanseKnapp, statistikkKnapp;
     private SharedPreferences deltePreferanser;

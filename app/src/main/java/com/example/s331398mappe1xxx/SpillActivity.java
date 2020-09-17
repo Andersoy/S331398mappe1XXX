@@ -317,8 +317,7 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
             editor.commit();
             venter = false;
             nyttRegnestykke();
-            //TODO: Øke ventetiden før levering av app?
-        }, 1000);
+        }, 2000);
     }
 
     void nyttRegnestykke(){
