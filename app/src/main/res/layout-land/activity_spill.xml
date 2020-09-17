@@ -25,7 +25,6 @@
                 android:layout_height="35dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="20dp"
-                android:layout_weight="0"
                 app:srcCompat="@drawable/check" />
 
             <TextView
@@ -33,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_weight="0.05"
+                android:layout_marginLeft="5dp"
                 android:fontFamily="@font/coming_soon"
                 android:text="0"
                 android:textSize="24sp" />
@@ -43,15 +42,16 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="20dp"
-                android:layout_weight="0 "
+                android:layout_marginLeft="5dp"
                 app:srcCompat="@drawable/uncheck" />
 
             <TextView
                 android:id="@+id/feilCounter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
                 android:fontFamily="@font/coming_soon"
                 android:text="0"
                 android:textSize="24sp" />
@@ -61,7 +61,7 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right|top"
+
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:backgroundTint="#0AFFFFFF"
@@ -160,7 +160,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#0FFFFFFF"
                 android:text="3"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/knapp4"
@@ -169,7 +169,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#0FFFFFFF"
                 android:text="4"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <ImageButton
                 android:id="@+id/slettKnapp"
@@ -179,8 +179,7 @@
                 android:backgroundTint="#0FFFFFFF"
                 android:elevation="2dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/slett"
-                android:textSize="24sp" />
+                android:src="@drawable/slett" />
 
         </LinearLayout>
 
@@ -194,57 +193,57 @@
                 android:id="@+id/knapp5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:backgroundTint="#0FFFFFFF"
                 android:text="5"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/knapp6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:backgroundTint="#0FFFFFFF"
                 android:text="6"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/knapp7"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
+                android:layout_weight="1"
                 android:backgroundTint="#0FFFFFFF"
                 android:text="7"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/knapp8"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
+                android:layout_weight="1"
                 android:backgroundTint="#0FFFFFFF"
                 android:text="8"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/knapp9"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
+                android:layout_weight="1"
                 android:backgroundTint="#0FFFFFFF"
                 android:text="9"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <ImageButton
                 android:id="@+id/leverKnapp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:backgroundTint="#0FFFFFFF"
                 android:elevation="2dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/send"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>

@@ -176,44 +176,8 @@
         </LinearLayout>
 
 
-
-
-
-
-
     </LinearLayout>
 
-<<<<<<< HEAD
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/nullstillButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#1AFFFFFF"
-                android:fontFamily="@font/coming_soon"
-                android:text="@string/nullstill"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/hovedmenyStatButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#1AFFFFFF"
-                android:fontFamily="@font/coming_soon"
-                android:text="@string/hovedmeny"
-                android:textStyle="bold" />
-        </LinearLayout>
-=======
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -243,9 +207,5 @@
             android:text="@string/hovedmeny"
             android:textStyle="bold" />
     </LinearLayout>
->>>>>>> fcf2da371288d19f9710b72150fea1b78d74be7f
-
-
-
 
 </LinearLayout>
