@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
     // TODO: Rapport
 
     //ting som kan gjøres hver for oss:
-    // TODO: Oversette gjenværende til tysk
     // TODO: Lag universell endre språk metode for alle klassene
+    // TODO: lukk dialogboks ved rotasjon i nullstill
 
     private Button spillKnapp, preferanseKnapp, statistikkKnapp;
     private SharedPreferences deltePreferanser;
