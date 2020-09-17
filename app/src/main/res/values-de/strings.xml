@@ -24,7 +24,8 @@
     <string name="alle_spill">Alle Spiele</string>
     <string name="antall_spill_0">Absolvierte Spiele: 0</string>
     <string name="nullstill">Zurücksetzen</string>
-    <string name="er_du_sikker">Bist du sicher?</string>
+    <string name="er_du_sikker">Sind Sie sicher, dass Sie zurücksetzen möchten?</string>
+    <string name="er_du_sikker2">Sind Sie sicher, dass Sie aufhören wollen?</string>
     <string name="ja">Ja</string>
     <string name="nei">Nein</string>
     <string name="positivTilbakemelding">Klasse, gut gemacht!!</string>

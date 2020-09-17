@@ -23,7 +23,8 @@
     <string name="alle_spill">Alle spill</string>
     <string name="antall_spill_0">Antall spill: 0</string>
     <string name="nullstill">Nullstill</string>
-    <string name="er_du_sikker">Er du sikker?</string>
+    <string name="er_du_sikker">Er du sikker på at du vil nullstille?</string>
+    <string name="er_du_sikker2">Er du sikker på at du vil avslutte?</string>
     <string name="ja">Ja</string>
     <string name="nei">Nei</string>
     <string name="positivTilbakemelding">Supert, dette kan du!</string>

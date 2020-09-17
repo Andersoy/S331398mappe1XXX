@@ -10,6 +10,12 @@ import androidx.fragment.app.DialogFragment;
 public class KonfirmasjonsDialog extends DialogFragment {
 
     private DialogClickListener callback;
+    String origin;
+    String tittel;
+
+    public KonfirmasjonsDialog(String origin) {
+        this.origin = origin;
+    }
 
     public interface DialogClickListener {
         void onYesClick();
@@ -29,7 +35,12 @@ public class KonfirmasjonsDialog extends DialogFragment {
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new AlertDialog.Builder(getActivity()).setTitle(R.string.er_du_sikker)
+        if(origin.equals("statistikk")){
+            tittel = getResources().getString(R.string.er_du_sikker);
+        }else{
+            tittel = getResources().getString(R.string.er_du_sikker2);
+        }
+        return new AlertDialog.Builder(getActivity()).setTitle(tittel)
                 .setPositiveButton(R.string.ja, (DialogInterface.OnClickListener) (dialog, whichButton) -> callback.onYesClick())
                 .setNegativeButton(R.string.nei, (DialogInterface.OnClickListener) (dialog, whichButton) -> callback.onNoClick())
                 .create();

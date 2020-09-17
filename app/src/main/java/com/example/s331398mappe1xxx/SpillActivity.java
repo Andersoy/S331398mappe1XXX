@@ -122,7 +122,7 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
 
     /**Dialogen gir brukeren muligheten til å kansellere avsluttingen av spillet*/
     public void visKonfirmasjonsDialog() {
-        DialogFragment dialog = new KonfirmasjonsDialog();
+        DialogFragment dialog = new KonfirmasjonsDialog("spill");
         dialog.show(getSupportFragmentManager(), "Avslutt");
     }
 
