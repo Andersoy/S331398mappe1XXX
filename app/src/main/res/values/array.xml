@@ -16,18 +16,18 @@
         <item>6 + 6</item>
         <item>10 + 9</item>
 
-        <item>12 - 7</item>
-        <item>20 - 2</item>
-        <item>6 - 3</item>
-        <item>15 - 10</item>
-        <item>18 - 4</item>
-        <item>25 - 20</item>
-        <item>9 - 3</item>
-        <item>5 - 5</item>
-        <item>13 - 1</item>
-        <item>11 - 9</item>
-        <item>8 - 7</item>
-        <item>10 - 5</item>
+        <item>4 + 1</item>
+        <item>7 + 11</item>
+        <item>2 + 1</item>
+        <item>20 + 5</item>
+        <item>10 + 4</item>
+        <item>16 + 3</item>
+        <item>3 + 3</item>
+        <item>0 + 0</item>
+        <item>12 + 0</item>
+        <item>1 + 1</item>
+        <item>8 + 8</item>
+        <item>10 + 7</item>
     </array>
 
     <array name="Svar">
@@ -48,15 +48,15 @@
         <item>5</item>
         <item>18</item>
         <item>3</item>
-        <item>5</item>
+        <item>25</item>
         <item>14</item>
-        <item>5</item>
+        <item>19</item>
         <item>6</item>
         <item>0</item>
         <item>12</item>
         <item>2</item>
-        <item>1</item>
-        <item>5</item>
+        <item>16</item>
+        <item>17</item>
     </array>
 
 </resources>

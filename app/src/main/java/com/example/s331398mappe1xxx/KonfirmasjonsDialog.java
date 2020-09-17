@@ -38,6 +38,7 @@ public class KonfirmasjonsDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        /**gir dialogboks tittel basert på hvilken aktivitet den ble kalt fra*/
         if(origin.equals("statistikk")){
             tittel = getResources().getString(R.string.er_du_sikker);
         }else{

@@ -92,7 +92,7 @@ public class ResultatActivity extends AppCompatActivity {
             tilbakemeldingstring = getString(R.string.motiverendeTilbakemelding);
         }
 
-        /** Skriver tilbakemelding til skjerm*/
+        /** Skriver tilbakemelding og resultater til skjerm*/
         tilbakemelding.setText(tilbakemeldingstring);
         antallRiktigeSvarResTextView.setText(""+ antallRiktigSvar);
         antallFeilSvarResTextView.setText(""+antallFeilSvar);
