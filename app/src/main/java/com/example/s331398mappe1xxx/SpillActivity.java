@@ -1,5 +1,6 @@
 package com.example.s331398mappe1xxx;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -93,6 +94,14 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
         startSpill();
     }
 
+    /** Lagrer det som står i innskrivningsfeltet så det kan hentes ut ved rotasjon*/
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        editor.putString("VarIFeltet", String.valueOf(innfyllingTextview.getText()));
+        editor.commit();
+    }
+
     /**Overstyrer tilbakeknappen på mobilen til å åpne avsluttdialogen*/
     @Override
     public void onBackPressed() {
@@ -102,6 +111,7 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
     @Override
     public void onYesClick() {
         editor.putBoolean("aktivtSpill", false);
+        editor.commit();
         finish();
     }
 
@@ -152,13 +162,16 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
             editor.putBoolean("aktivtSpill", true);
             editor.commit();
         }
-        /**Dersom et spill allerede er i gang(aktivtSpill==true) hentes aktive verdier fra sharedpreferences*/
+        /**Dersom et spill allerede er i gang(aktivtSpill==true) hentes aktive verdier fra sharedpreferences (dette triggers ved rotasjon)*/
         else{
             teller = deltePreferanser.getInt("oppgaveTeller", 0);
             antallRiktigeSvar = deltePreferanser.getInt("aktiveRiktige",0);
             antallGaleSvar = deltePreferanser.getInt("aktiveFeil",0);
             riktigeCounter.setText(String.valueOf(antallRiktigeSvar));
             feilCounter.setText(String.valueOf(antallGaleSvar));
+
+            /**henter det som stod i innskrivningsfeltet før rotasjon*/
+            innfyllingTextview.setText(deltePreferanser.getString("VarIFeltet",null));
         }
 
         /**Henter svar og oppgavestrenger og konverterer dem tilbake til arrays*/
@@ -229,6 +242,7 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
         if(venter || svar.length() > 8){ return; }
         svar = svar + tall;
         innfyllingTextview.setText(svar);
+        brukerSvar = Integer.parseInt(svar);
     }
 
     /** kontrollerer om spilleren har trykket på riktig svar og gir tilbakemelding*/
@@ -291,7 +305,6 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
         }
         editor.commit();
         oppgaveTextView.setText(tilbakemelding);
-        oppgaveTextView.setTextSize(30);
 
         /** Følgende utføres for å få programmet til å vente 2 sekunder mellom spørsmålene slik at
          * spilleren kan se om de har svar riktig eller galt*/
@@ -311,7 +324,6 @@ public class SpillActivity extends AppCompatActivity implements KonfirmasjonsDia
     void nyttRegnestykke(){
         /** Skriver nytt regnestykke til skjerm hvis man ikke har fullført alle*/
         if (teller < antallOppgaver) {
-            oppgaveTextView.setTextSize(36);
             oppgaveTextView.setText(utvalgteOppgaver[teller]);
             erlikTextview.setText("= ");
             understrek.setVisibility(View.VISIBLE);

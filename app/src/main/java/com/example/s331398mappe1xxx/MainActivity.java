@@ -14,14 +14,14 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     //ting å gå gjennom felles:
-    // TODO: Se over og kommenter koden
+    // TODO: Se over og kommenter koden noe
     // TODO: Landscapemode
     // TODO: Juster layout etter designregler
     // TODO: Rapport
 
     //ting som kan gjøres hver for oss:
-    // TODO: Oversette gjenværende til tysk
     // TODO: Lag universell endre språk metode for alle klassene
+    // TODO: lukk dialogboks ved rotasjon i nullstill
 
     private Button spillKnapp, preferanseKnapp, statistikkKnapp;
     private SharedPreferences deltePreferanser;
@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //TODO: Spør lærer
-    //Er dette en ok måte å løse problemet med at parent ikke oppdaterer seg ved barnets finish()?
     @Override
     protected void onResume() {
         super.onResume();
@@ -104,8 +103,6 @@ public class MainActivity extends AppCompatActivity {
             forandreSpraak(deltePreferanser.getString("spraakKode", null));
         }
 
-        // TODO: Spør lærer
-        //Kjøres onResume ved onCreate()? Og er det i så fall dumt at denne kodebiten kjøres to ganger?
         /**Nullstiller verdiene i sharedpreferences ved retur fra barneaktiviteter, hovedsaklig spillaktivitet*/
         editor.putBoolean("aktivtSpill", false);
         editor.remove("oppgaveTeller");
