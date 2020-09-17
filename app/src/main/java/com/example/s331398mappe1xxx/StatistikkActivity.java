@@ -62,12 +62,12 @@ public class StatistikkActivity extends AppCompatActivity implements Konfirmasjo
             finish();
         });
 
-        hentStattestikk();
+        hentStatistikk();
 
-        visStattestikk();
+        visStatistikk();
     }
 
-    private void hentStattestikk(){
+    private void hentStatistikk(){
         antallOppgaverForrige = deltePreferanser.getInt("AntallOppgaverForrige", 0);
         antallRiktigSvarForrige = deltePreferanser.getInt("AntallRiktigeForrige", 0);
         antallFeilSvarForrige = deltePreferanser.getInt("AntallFeilForrige", 0);
@@ -78,7 +78,7 @@ public class StatistikkActivity extends AppCompatActivity implements Konfirmasjo
         totAntFeil = deltePreferanser.getInt("TotaltFeil", 0);
     }
 
-    private void visStattestikk(){
+    private void visStatistikk(){
         antOppgForrigeTextView.setText(getResources().getString(R.string.antallOppgaver)+" "+antallOppgaverForrige);
         antRiktigeForrigeTextView.setText(""+antallRiktigSvarForrige);
         antFeilForrigeTextView.setText(""+antallFeilSvarForrige);
