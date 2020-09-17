@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         recreate();
     }
 
-    //TODO: Spør lærer
     @Override
     protected void onResume() {
         super.onResume();
